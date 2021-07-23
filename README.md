@@ -21,6 +21,7 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 ### HOW IT WORKS
 - Users input scanned/photographed documents (answer booklets) into the system.
 - Azure's OCR Read API identifies text
+![read api explanation](https://user-images.githubusercontent.com/30049719/126845493-309913a8-48d7-4626-83c1-c6820d639768.PNG)
 - Key phrase etraction is used to extract key phrases.
 - The system matches key phrases from answer booklets to key phrases from marking guides and scores based on that comparison.
 
