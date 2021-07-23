@@ -44,3 +44,4 @@ Some Identified possible hinderances to the project include:
 - https://docs.microsoft.com/en-gb/learn/modules/read-text-computer-vision/
 - https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
 - https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
+- https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/vision-api-how-to-topics/call-read-api
