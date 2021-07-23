@@ -18,14 +18,28 @@ A grading system that uses Artificial Intelligence to identify scanned student a
   - Read API
   - Text Analysis
 
+### HOW IT WORKS
+- Users input scanned/photographed documents (answer booklets) into the system.
+- Azure's OCR Read API identifies text
+- Key phrase etraction is used to extract key phrases.
+- The system matches key phrases from answer booklets to key phrases from marking guides and scores based on that comparison.
+
+### QUESTIONS
+- How do we add custom key phrases so we can extract key phrases that may not be picked up automatically by the azure service.
+- Would the marking guide be provided as a set of key points/phrases to be used by the system's "comparison mechanism" or would it be put into the system for the OCR to identify key phrases contained therein?
+- How would grading be done? Is it that when matching key phrases are identified, they would just be a given a "correct" or "wrong' score?
+- *There would need to be a way to determine level of correctness so that students that only got part of a question correct can be given some marks out of the total achievable marks(e.g. 3/5) instead of a generic "correct" or "wrong" score.*
 
 ### ADDITIONAL FEATURES
-- The system may later be developed ro track performance in certain courses for various analytical reasons.
-- The sysem may later be able to search for answers to questions on the internet and hence provide more accurate grading.
+- The system may later be developed to monitor performance in certain courses and display results in insightul format for various analytical uses.
+- The system may later be able to search for answers to questions on the internet and hence provide more accurate grading.
 
 ### POSSIBLE LIMITATIONS
 Some Identified possible hinderances to the project include:
 - Ability of OCR to identify illeligible handwriting
+- Accuracy of system in correctly matching answer sheet key phrases to correct (marking guide) key phrases 
 
 ### RELEVANT LINKS
 https://docs.microsoft.com/en-gb/learn/modules/read-text-computer-vision/
+https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
+https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
