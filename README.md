@@ -40,6 +40,6 @@ Some Identified possible hinderances to the project include:
 - Accuracy of system in correctly matching answer sheet key phrases to correct (marking guide) key phrases 
 
 ### RELEVANT LINKS
-https://docs.microsoft.com/en-gb/learn/modules/read-text-computer-vision/
-https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
-https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
+- https://docs.microsoft.com/en-gb/learn/modules/read-text-computer-vision/
+- https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
+- https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
