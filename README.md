@@ -1,47 +1,70 @@
-# AI-GRADER
-### OVERVIEW
-Grading students' answer sheets using Computer Vision, OCR and Sentiment Analysis on Azure
+# Getting Started with Create React App
 
-### PROJECT DESCRIPTION
-A grading system that uses Artificial Intelligence to identify scanned student answer booklets, categorize the identified text, and give a grade based on a provided scoring guide. 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### USE CASES
-#### FOR THE LECTURERS/GRADERS
-- Upload scanned answer booklets and marking guide and AI grades based on provided scoring
+## Available Scripts
 
-#### FOR THE STUDENTS
-- View result of graded tests
+In the project directory, you can run:
 
-### TECHNOLOGIES
-- Python
-- Microsoft Azure
-  - Read API
-  - Text Analysis
+### `npm start`
 
-### HOW IT WORKS
-- Users input scanned/photographed documents (answer booklets) into the system.
-- Azure's OCR Read API identifies text
-![read api explanation](https://user-images.githubusercontent.com/30049719/126845493-309913a8-48d7-4626-83c1-c6820d639768.PNG)
-- Key phrase etraction is used to extract key phrases.
-- The system matches key phrases from answer booklets to key phrases from marking guides and scores based on that comparison.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### QUESTIONS
-- How do we add custom key phrases so we can extract key phrases that may not be picked up automatically by the azure service.
-- Would the marking guide be provided as a set of key points/phrases to be used by the system's "comparison mechanism" or would it be put into the system for the OCR to identify key phrases contained therein?
-- How would grading be done? Is it that when matching key phrases are identified, they would just be a given a "correct" or "wrong' score?
-- *There would need to be a way to determine level of correctness so that students that only got part of a question correct can be given some marks out of the total achievable marks(e.g. 3/5) instead of a generic "correct" or "wrong" score.*
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-### ADDITIONAL FEATURES
-- The system may later be developed to monitor performance in certain courses and display results in insightul format for various analytical uses.
-- The system may later be able to search for answers to questions on the internet and hence provide more accurate grading.
+### `npm test`
 
-### POSSIBLE LIMITATIONS
-Some Identified possible hinderances to the project include:
-- Ability of OCR to identify illeligible handwriting
-- Accuracy of system in correctly matching answer sheet key phrases to correct (marking guide) key phrases 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### RELEVANT LINKS
-- https://docs.microsoft.com/en-gb/learn/modules/read-text-computer-vision/
-- https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
-- https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
-- https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/vision-api-how-to-topics/call-read-api
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
