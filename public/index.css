@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eee;
+  background-image: url("https://transparenttextures.com/patterns/bright-squares.png");
+}
+
+.upload-area {
+  width: 45vw;
+  margin: 0 auto;
+  border: none;
+  padding: 0.5vw 1vw 0;
+  /* background-color: black; */
+}
+
+.upload-area textarea {
+  width: 100%;
+  height: 30vh;
+  margin: 5rem auto;
+  padding: 20px;
+  border-radius: 25px;
+  position: relative;
+  /* z-index: 9; */
+  box-shadow: 0 0 5px 4px rgb(161, 161, 161);
+  background-color: #fff;
+  outline: none;
+  font-size: 1.5rem;
+  resize: none;
+  /* position: relative; */
+}
+
+.upload-icon {
+  position: absolute;
+  transform: translate(700%, -200%);
+  /* right: -500px;
+  bottom: 200px; */
+  font-size: 20;
+  z-index: 99;
+}
+
+footer {
+  position: absolute;
+  font-size: 1.5rem;
+  text-align: center;
+  color: rgb(90, 84, 84);
+  bottom: 1rem;
+  left: 38%;
+  /* font-family:; */
+}
+
+@media screen and (max-width: 425px) {
+  .upload-area {
+    width: 70vw;
+  }
+  footer {
+    font-size: 1rem;
+  }
+}
