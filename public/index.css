@@ -13,12 +13,20 @@ body {
   background-image: url("https://transparenttextures.com/patterns/bright-squares.png");
 }
 
+input[type="file"] {
+  font-size: 1rem;
+  position: absolute;
+  /* transform: translate(-100%, 0); */
+  top: 12rem;
+  right: 9rem;
+}
+
 .upload-area {
+  position: relative;
   width: 45vw;
   margin: 0 auto;
   border: none;
   padding: 0.5vw 1vw 0;
-  /* background-color: black; */
 }
 
 .upload-area textarea {
@@ -42,7 +50,7 @@ body {
   transform: translate(700%, -200%);
   /* right: -500px;
   bottom: 200px; */
-  font-size: 20;
+  font-size: 20px;
   z-index: 99;
 }
 
