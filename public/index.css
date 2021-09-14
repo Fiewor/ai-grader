@@ -7,66 +7,71 @@
 
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: #eee;
   background-image: url("https://transparenttextures.com/patterns/bright-squares.png");
 }
 
-input[type="file"] {
-  font-size: 1rem;
-  position: absolute;
-  /* transform: translate(-100%, 0); */
-  top: 12rem;
-  right: 9rem;
-}
-
 .upload-area {
-  position: relative;
+  /* background-color: blue; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 45vw;
-  margin: 0 auto;
-  border: none;
-  padding: 0.5vw 1vw 0;
+  height: 40vh;
+  margin: 2rem auto 0;
+  padding: 0.5em;
 }
 
 .upload-area textarea {
   width: 100%;
-  height: 30vh;
-  margin: 5rem auto;
+  height: 100%;
   padding: 20px;
   border-radius: 25px;
-  position: relative;
-  /* z-index: 9; */
   box-shadow: 0 0 5px 4px rgb(161, 161, 161);
   background-color: #fff;
-  outline: none;
   font-size: 1.5rem;
+  outline: none;
   resize: none;
-  /* position: relative; */
+  position: relative;
+  text-align: center;
+}
+
+input[type="file"] {
+  font-size: 1.2rem;
+  position: absolute;
+}
+
+.upload-icon-container {
+  cursor: pointer;
+  position: absolute;
+  bottom: 3em;
+  align-self: flex-end;
+  padding-right: 0.2em;
 }
 
 .upload-icon {
-  position: absolute;
-  transform: translate(700%, -200%);
-  /* right: -500px;
-  bottom: 200px; */
-  font-size: 20px;
-  z-index: 99;
+  color: rgb(23, 74, 167);
 }
 
 footer {
-  position: absolute;
+  position: fixed;
   font-size: 1.5rem;
   text-align: center;
   color: rgb(90, 84, 84);
   bottom: 1rem;
-  left: 38%;
-  /* font-family:; */
+  margin: 0 auto;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 768px) {
   .upload-area {
     width: 70vw;
+  }
+  input[type="file"] {
+    font-size: 0.7rem;
   }
   footer {
     font-size: 1rem;
