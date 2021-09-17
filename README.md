@@ -13,6 +13,9 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 - View result of graded tests
 
 ### TECHNOLOGIES
+- JavaScript
+- Nodejs
+- React
 - Python
 - Microsoft Azure
   - Read API
