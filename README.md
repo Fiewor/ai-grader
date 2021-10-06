@@ -48,3 +48,6 @@ Some Identified possible hinderances to the project include:
 - https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-keyword-extraction
 - https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-keyphrases
 - https://docs.microsoft.com/en-us/azure/cognitive-services/computer-vision/vision-api-how-to-topics/call-read-api
+- https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/quickstarts/client-libraries-rest-api?tabs=version-3-1&pivots=programming-language-javascript#key-phrase-extraction
+- https://www.npmjs.com/package/@azure/ai-text-analytics
+- https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js
