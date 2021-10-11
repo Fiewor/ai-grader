@@ -25,11 +25,8 @@ const DropArea = ({route}) => {
 
     return (
         <div>
-            <form className="upload-area" children>
+            <form className="upload-area">
                 <textarea readOnly="yes" name="content" id="" cols="20" rows="3" placeholder="Upload images here"/>
-                <p>{route}</p>
-                <p>http://localhost:3001/upload/{route}</p>
-                {/* {children} */}
                 <input onChange={fileUpload} type="file" name="file" multiple/>
                 <Button type="submit" onClick={sendFiles} className="upload-icon-container"><PublishIcon className="upload-icon"/></Button>
             </form>
