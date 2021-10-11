@@ -5,8 +5,9 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div className="App">
-    <DropArea/>
-    {/* <Footer/> */}
+      <DropArea route="answer"/>
+      <DropArea route="mark"/>
+      {/* <Footer/> */}
     </div>
   );
 }
