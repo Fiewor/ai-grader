@@ -5,12 +5,12 @@ import axios from "axios"
 
 const DropArea = ({route}) => {
     const [files, setFiles] = useState('')
-    function fileUpload(event){
+    const fileUpload = (event) => {
         setFiles(Array.from(event.target.files))
         console.log(files)
     }
     
-    function sendFiles(event){
+    const sendFiles = (event) => {
         event.preventDefault()
 
         const formData = new FormData()
