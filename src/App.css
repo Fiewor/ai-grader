@@ -52,12 +52,12 @@ form div label {
   padding: 0.3em 0;
 }
 
-.loginInput {
+.login-input {
   padding: 1em 2em;
   width: 100%;
 }
 
-.loginButton {
+.login-button {
   width: 100%;
   margin-top: 0.5em;
   padding: 0.3em 2em;
@@ -66,6 +66,14 @@ form div label {
   color: white;
 }
 
-.loginButton:hover {
+.login-button:hover {
   background: rgb(29, 29, 29);
+}
+
+.view-button {
+  background: red;
+  color: white;
+  padding: 1vw 1.5vw;
+  border: none;
+  box-shadow: -3px -2px 5px 1px black;
 }

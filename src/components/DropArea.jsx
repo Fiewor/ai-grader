@@ -5,19 +5,20 @@ import axios from "axios"
 
 const DropArea = ({route}) => {
     const [files, setFiles] = useState('')
+
     const fileUpload = (event) => {
         setFiles(Array.from(event.target.files))
-        console.log(files)
     }
     
     const sendFiles = (event) => {
         event.preventDefault()
 
         const formData = new FormData()
-        files.forEach((fileItem, i) => {
-            console.log(fileItem)
-            formData.append(i, fileItem)
+            files.forEach((fileItem, i) => {
+                console.log(fileItem)
+                formData.append(i, fileItem)
         })
+
         axios.post(`http://localhost:3001/upload/${route}`, formData)
         .then(res => console.log(res))
         .catch(error => console.log(error))
