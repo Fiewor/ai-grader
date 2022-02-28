@@ -8,7 +8,6 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 ### USE CASES
 #### FOR THE LECTURERS/GRADERS
 - Upload scanned answer booklets and marking guide and AI grades based on provided scoring
-- **Current limitation**: system can currently only grade simple written text. Cannot grade diagrams or math
 
 #### FOR THE STUDENTS
 - View result of graded tests
@@ -40,6 +39,7 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 - The system may later be able to search for answers to questions on the internet and hence provide more accurate grading.
 
 ### POSSIBLE LIMITATIONS
+System can currently only grade simple written text. Cannot grade diagrams or math
 Some Identified possible hinderances to the project include:
 - Ability of OCR to identify illeligible handwriting
 - Accuracy of system in correctly matching answer sheet key phrases to correct (marking guide) key phrases 
