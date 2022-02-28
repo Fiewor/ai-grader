@@ -1,6 +1,6 @@
 # AI-GRADER
 ### OVERVIEW
-Grading students' answer sheets using Computer Vision, OCR and Sentiment Analysis on Azure
+Grading students' answer sheets using Microsoft Azure's Computer Vision (OCR), and Natural Language Processing services (KeyPhrase Extraction and Sentiment Analysis)
 
 ### PROJECT DESCRIPTION
 A grading system that uses Artificial Intelligence to identify scanned student answer booklets, categorize the identified text, and give a grade based on a provided scoring guide. 
@@ -8,6 +8,7 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 ### USE CASES
 #### FOR THE LECTURERS/GRADERS
 - Upload scanned answer booklets and marking guide and AI grades based on provided scoring
+- **Current limitation**: system can currently only grade simple written text. Cannot grade diagrams or math
 
 #### FOR THE STUDENTS
 - View result of graded tests
