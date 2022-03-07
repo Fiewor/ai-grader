@@ -11,10 +11,8 @@ const DisplayArea = () => {
 
   useEffect(() => {
     const getText = async () => {
-      if (text.length === 0) {
-        let result = await axios.get(`http://localhost:3001/viewText`);
-        setText(result.data);
-      }
+      let result = await axios.get(`http://localhost:3001/viewText`);
+      setText(result.data);
     };
     getText();
   }, [text.length]);

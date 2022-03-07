@@ -111,10 +111,11 @@ button:hover {
   padding: 1vw 1.5vw;
   border: none;
   box-shadow: -3px -2px 5px 1px black;
+  text-decoration: none;
 }
 .view-button:hover {
   cursor: pointer;
-  background: rgb(255, 0, 0);
+  background: rgb(206, 8, 8);
 }
 
 .view-button:active {
