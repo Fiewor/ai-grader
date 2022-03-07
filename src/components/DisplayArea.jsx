@@ -3,6 +3,11 @@ import axios from "axios";
 
 const DisplayArea = () => {
   const [text, setText] = useState([]);
+  // this button is meant to enable users view text extracted from images uploaded
+  // also display key phrases
+  // after grading logic is done, display result of grading
+
+  // performs get request to get read result from backend
 
   useEffect(() => {
     const getText = async () => {

@@ -3,10 +3,8 @@ import DropArea from "./components/DropArea";
 import DisplayArea from "./components/DisplayArea";
 import Nav from "./components/Nav";
 import Form from "./components/Form";
-import ViewButton from "./components/ViewButton";
-//eslint-disable-next-line
 import Footer from "./components/Footer";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 function App() {
@@ -14,13 +12,20 @@ function App() {
     <Router>
       <div className="App">
         <Nav />
-        <Switch>
-          <Route path="/" exact component={DropArea} />
-          <Route path="/login" component={Form} />
-          <Route path="/viewText" component={DisplayArea} />
-        </Switch>
-        {/* <DropArea route="mark"/> */}
-        {/* <Footer/> */}
+        <Routes>
+          <Route path="/" exact element={<DropArea />} />
+          <Route path="login" element={<Form />} />
+          <Route path="viewText" element={<DisplayArea />} />
+          <Route
+            path="*"
+            element={
+              <main style={{ padding: "1rem" }}>
+                <p>There's nothing here!</p>
+              </main>
+            }
+          />
+        </Routes>
+        <Footer />
       </div>
     </Router>
   );

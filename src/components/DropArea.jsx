@@ -27,8 +27,8 @@ const DropArea = (mark) => {
   };
 
   return (
-    <div>
-      <form className="upload-area">
+    <div className="upload-area">
+      <form className="upload-form">
         <textarea
           readOnly="yes"
           name="content"
@@ -42,7 +42,7 @@ const DropArea = (mark) => {
           type="file"
           name="file"
           multiple
-          class="fileInput"
+          class="file-input"
         />
         <Button
           type="submit"

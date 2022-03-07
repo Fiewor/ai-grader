@@ -1,13 +1,21 @@
 /* App styles */
 .App {
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 /* navbar */
-nav {
+.navbar {
   background: black;
   color: white;
-  min-height: 10vh;
+  min-height: 8vh;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -17,9 +25,7 @@ nav {
 .brand-name {
   font-size: 2.5rem;
   padding-left: 3vw;
-  margin-top: 0.2rem;
   color: white;
-  text-decoration: none;
 }
 
 .nav-links {
@@ -37,25 +43,45 @@ nav {
   text-decoration: none;
 }
 
-/* DropArea */
-form {
-  margin: 0 auto;
-  width: 30vw;
-  font-size: 1.5em;
+@media screen and (max-width: 425px) {
+  .brand-name {
+    font-size: 1.5rem;
+  }
+  .nav-links li {
+    font-size: 1rem;
+  }
 }
 
-form div {
+/* DropArea */
+.upload-form {
+  margin: 0 auto;
+  min-width: 40vw;
+  min-height: max-content;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  justify-content: center;
+}
+
+.upload-form div {
   margin: 2vh 0;
 }
 
-form div label {
+.upload-form div label {
   text-align: left;
   display: block;
   font-size: 1.25em;
   padding: 0.3em 0;
 }
 
-.fileInput {
+.upload-form textarea {
+  font-size: 1rem;
+  outline: none;
+  box-shadow: none;
+}
+
+.file-input {
   cursor: pointer;
 }
 
@@ -88,9 +114,17 @@ form div label {
 }
 .view-button:hover {
   cursor: pointer;
+  background: rgb(255, 0, 0);
 }
 
 .view-button:active {
-  background: rgb(196, 4, 4);
   box-shadow: -2px -2px 5px 1px black;
+}
+
+/* footer */
+footer {
+  font-size: 1rem;
+}
+footer p a {
+  text-decoration: none;
 }
