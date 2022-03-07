@@ -1,13 +1,26 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const DisplayArea = () => {
+  const [text, setText] = useState([]);
 
-    // display 
-    return(
-        <div>
-            {/* <p>{text[0]}</p> */}
-        </div>
-    )
-}
+  useEffect(() => {
+    const getText = async () => {
+      if (text.length === 0) {
+        let result = await axios.get(`http://localhost:3001/viewText`);
+        setText(result.data);
+      }
+    };
+    getText();
+  }, [text.length]);
 
-export default DisplayArea
+  return (
+    <>
+      {text.map((result) => {
+        return <p>{result.readText}</p>;
+      })}
+    </>
+  );
+};
+
+export default DisplayArea;

@@ -1,7 +1,9 @@
+/* App styles */
 .App {
   text-align: center;
 }
 
+/* navbar */
 nav {
   background: black;
   color: white;
@@ -35,6 +37,7 @@ nav {
   text-decoration: none;
 }
 
+/* DropArea */
 form {
   margin: 0 auto;
   width: 30vw;
@@ -52,6 +55,11 @@ form div label {
   padding: 0.3em 0;
 }
 
+.fileInput {
+  cursor: pointer;
+}
+
+/* Form */
 .login-input {
   padding: 1em 2em;
   width: 100%;
@@ -70,10 +78,19 @@ form div label {
   background: rgb(29, 29, 29);
 }
 
+/* ViewButton */
 .view-button {
-  background: red;
+  background: rgb(255, 0, 0);
   color: white;
   padding: 1vw 1.5vw;
   border: none;
   box-shadow: -3px -2px 5px 1px black;
+}
+.view-button:hover {
+  cursor: pointer;
+}
+
+.view-button:active {
+  background: rgb(196, 4, 4);
+  box-shadow: -2px -2px 5px 1px black;
 }
