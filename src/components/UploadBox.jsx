@@ -20,9 +20,15 @@ const UploadBox = (props) => {
       formData.append(i, fileItem);
     });
 
+    let noFile = false;
     axios
       .post(`http://localhost:3001/upload/${section}`, formData)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        noFile = res.data.noFile;
+        noFile && alert(`Choose at least one file before uploading`);
+        noFile = false;
+      })
       .catch((error) => console.log(error));
   };
   return (
