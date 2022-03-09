@@ -12,7 +12,9 @@ const DisplayArea = () => {
     };
     getText();
   }, [text.length]);
+
   console.log("data", text);
+
   return (
     <>
       {text.map((result) => {
