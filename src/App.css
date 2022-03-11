@@ -18,7 +18,7 @@ button:hover {
   min-height: 8vh;
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  align-items: center;
   width: 100vw;
 }
 
@@ -108,7 +108,7 @@ button:hover {
 .view-button {
   background: rgb(255, 0, 0);
   color: white;
-  padding: 1vw 1.5vw;
+  padding: 0.8rem 1.5rem;
   border: none;
   box-shadow: -3px -2px 5px 1px black;
   text-decoration: none;
