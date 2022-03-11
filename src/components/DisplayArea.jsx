@@ -13,11 +13,9 @@ const DisplayArea = () => {
       let result = await axios.get(`http://localhost:3001/viewText`);
       setText(result.data);
       setLoading(true);
-
-      if (result) setCompleted(true);
     };
     getText();
-  }, [text]);
+  }, [text.length]);
 
   console.log("data", text);
 
