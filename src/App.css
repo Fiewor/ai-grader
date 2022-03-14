@@ -52,7 +52,7 @@ button:hover {
   }
 }
 
-/* DropArea */
+/* UploadBox */
 .upload-form {
   margin: 0 auto;
   min-width: 40vw;
@@ -60,7 +60,7 @@ button:hover {
   font-size: 1.5em;
   display: flex;
   flex-direction: column;
-  align-items: space-around;
+  align-content: center;
   justify-content: center;
 }
 
@@ -83,6 +83,7 @@ button:hover {
 
 .file-input {
   cursor: pointer;
+  padding: 2rem;
 }
 
 /* Form */
@@ -128,4 +129,28 @@ footer {
 }
 footer p a {
   text-decoration: none;
+}
+
+/*  */
+.display-area {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+tr {
+  border: 1px solid #da7777;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
