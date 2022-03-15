@@ -3,7 +3,6 @@ import axios from "axios";
 
 const DisplayArea = () => {
   const [text, setText] = useState([]);
-  //! TO-DO: after grading logic is done, display result of grading
 
   useEffect(() => {
     const getText = async () => {
@@ -11,9 +10,7 @@ const DisplayArea = () => {
       setText(result.data);
     };
     getText();
-  }, [text.length]);
-
-  console.log("data", text);
+  }, []);
 
   return (
     <>
