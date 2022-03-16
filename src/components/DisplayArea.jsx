@@ -5,7 +5,6 @@ import { Player } from "@lottiefiles/react-lottie-player";
 const DisplayArea = () => {
   const [text, setText] = useState([]);
   const [loading, setLoading] = useState(undefined);
-  // const [completed, setCompleted] = useState(undefined);
 
   //! TO-DO: after grading logic is done, display result of grading
   useEffect(() => {
@@ -31,11 +30,11 @@ const DisplayArea = () => {
           style={{ width: "70%" }}
         ></Player>
       ) : (
-        text.map((result) => (
+        text.map((result, _id) => (
           <div>
-            <h2>{result.readText}</h2>
-            {result.keyPhrases.map((item) => (
-              <p>{item}</p>
+            <h2 key={_id}>{result.readText}</h2>
+            {result.keyPhrases.map((item, id) => (
+              <p key={id}>{item}</p>
             ))}
           </div>
         ))
