@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-const DisplayArea = () => {
+export const DisplayArea = () => {
   const [text, setText] = useState([]);
   const [loading, setLoading] = useState(undefined);
 
@@ -42,5 +42,3 @@ const DisplayArea = () => {
     </>
   );
 };
-
-export default DisplayArea;

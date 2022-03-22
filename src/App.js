@@ -1,9 +1,12 @@
 import React from "react";
-import DropArea from "./components/DropArea";
-import DisplayArea from "./components/DisplayArea";
-import Nav from "./components/Nav";
-import Form from "./components/Form";
-import Footer from "./components/Footer";
+import {
+  DropArea,
+  DisplayArea,
+  Nav,
+  Form,
+  Footer,
+  LandingPage,
+} from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -13,7 +16,8 @@ function App() {
       <div className="App">
         <Nav />
         <Routes>
-          <Route path="/" exact element={<DropArea />} />
+          <Route path="/" exact element={<LandingPage />} />
+          <Route path="grade" element={<DropArea />} />
           <Route path="login" element={<Form />} />
           <Route path="viewText" element={<DisplayArea />} />
           <Route

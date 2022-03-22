@@ -1,8 +1,7 @@
 import React from "react";
-import UploadBox from "./UploadBox";
-import ViewButton from "./ViewButton";
+import { UploadBox, ViewButton } from "./index";
 
-const DropArea = (mark) => {
+export const DropArea = (mark) => {
   return (
     <div className="upload-area">
       <UploadBox section="mark" />
@@ -12,5 +11,3 @@ const DropArea = (mark) => {
     </div>
   );
 };
-
-export default DropArea;
