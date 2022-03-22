@@ -39,7 +39,7 @@ const UploadBox = (props) => {
         id=""
         cols="20"
         rows="3"
-        placeholder={`Upload ${section} sheets here`}
+        placeholder={`Upload image or pdf here`}
       />
       <input
         onChange={fileUpload}

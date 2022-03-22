@@ -130,3 +130,20 @@ footer {
 footer p a {
   text-decoration: none;
 }
+
+/* Display Area */
+
+.display-area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+}
+
+.sheet-button {
+  padding: 1rem 2rem;
+  color: white;
+  background: rgb(22, 22, 22);
+  box-shadow: 1px 2px black;
+  border: none;
+}
