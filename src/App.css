@@ -1,4 +1,10 @@
 /* App styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   display: flex;
   justify-content: center;
@@ -9,47 +15,6 @@
 
 button:hover {
   cursor: pointer;
-}
-
-/* navbar */
-.navbar {
-  background: black;
-  color: white;
-  min-height: 8vh;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-}
-
-.brand-name {
-  font-size: 2.5rem;
-  padding-left: 3vw;
-  color: white;
-}
-
-.nav-links {
-  width: 30%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-links li {
-  color: white;
-  font-size: 1.3em;
-  text-decoration: none;
-}
-
-@media screen and (max-width: 425px) {
-  .brand-name {
-    font-size: 1.5rem;
-  }
-  .nav-links li {
-    font-size: 1rem;
-  }
 }
 
 /* UploadBox */
@@ -103,30 +68,4 @@ button:hover {
 
 .login-button:hover {
   background: rgb(29, 29, 29);
-}
-
-/* ViewButton */
-.view-button {
-  background: rgb(255, 0, 0);
-  color: white;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  box-shadow: -3px -2px 5px 1px black;
-  text-decoration: none;
-}
-.view-button:hover {
-  cursor: pointer;
-  background: rgb(206, 8, 8);
-}
-
-.view-button:active {
-  box-shadow: -2px -2px 5px 1px black;
-}
-
-/* footer */
-footer {
-  font-size: 1rem;
-}
-footer p a {
-  text-decoration: none;
 }
