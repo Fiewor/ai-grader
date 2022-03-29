@@ -16,6 +16,13 @@ export const DisplayArea = () => {
     getText();
   }, []);
 
+  // useEffect(()=>{
+  //   const getGrade = async () => {
+  //     let grade = await axios.get(`http:localhost:3001/gradeResult`)
+  //     console.log("grade data", grade)
+  //   }
+  // })
+
   console.log("data", text);
 
   return (
