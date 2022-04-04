@@ -37,6 +37,7 @@ export const UploadBox = ({ section }) => {
       })
       .catch((error) => console.log(error));
   };
+  console.log(process.env.NODE_ENV);
   return (
     <form className="upload-form">
       <textarea
