@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start-client": "react-scripts start",
-    "start": "cd ai-grader-backend && yarn start",
-    "build": "react-scripts build && (cd ai-grader-backend && yarn install)",
+    "start": "yarn start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn run build"
