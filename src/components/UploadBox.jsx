@@ -3,8 +3,7 @@ import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
-export const UploadBox = (props) => {
-  const { section } = props;
+export const UploadBox = ({ section }) => {
   const [files, setFiles] = useState([]);
 
   const fileUpload = (event) => {
@@ -22,7 +21,14 @@ export const UploadBox = (props) => {
 
     let noFile = false;
     axios
-      .post(`http://localhost:3001/uploads/${section}`, formData)
+      .post(
+        `${
+          process.env.NODE_ENV === "production"
+            ? process.env.REACT_APP_LIVE_API_URL
+            : process.env.REACT_APP_LOCAL_API_URL
+        }uploads/${section}`,
+        formData
+      )
       .then((res) => {
         console.log(res);
         noFile = res.data.noFile;

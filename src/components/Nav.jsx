@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBar = styled.nav`
-  background: black;
+  background: #000;
   color: white;
   min-height: 8vh;
   display: flex;

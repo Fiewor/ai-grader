@@ -9,20 +9,18 @@ export const DisplayArea = () => {
   //! TO-DO: after grading logic is done, display result of grading
   useEffect(() => {
     const getText = async () => {
-      let result = await axios.get(`http://localhost:3001/viewText`);
+      let result = await axios.get(
+        `${
+          process.env.NODE_ENV === "production"
+            ? process.env.REACT_APP_LIVE_API_URL
+            : process.env.REACT_APP_LOCAL_API_URL
+        }viewText`
+      );
       setText([result.data]);
       setLoading(true);
     };
     getText();
   }, []);
-
-  // useEffect(()=>{
-  //   const getGrade = async () => {
-  //     let grade = await axios.get(`http:localhost:3001/gradeResult`)
-  //     console.log("grade data", grade)
-  //   }
-  // })
-
   console.log("data", text);
 
   return (
@@ -32,7 +30,7 @@ export const DisplayArea = () => {
           autoplay
           loop
           mode="normal"
-          src="https://assets1.lottiefiles.com/datafiles/HN7OcWNnoqje6iXIiZdWzKxvLIbfeCGTmvXmEm1h/data.json"
+          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION}
           speed="1"
           style={{ width: "70%" }}
         ></Player>

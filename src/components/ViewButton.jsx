@@ -3,27 +3,24 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const UploadButton = styled.button`
-  background: rgb(255, 0, 0);
-  color: white;
+  background: #959595;
   padding: 0.8rem 1.5rem;
   border: none;
-  box-shadow: -3px -2px 5px 1px black;
-  text-decoration: none;
 
   :hover {
     cursor: pointer;
-    background: rgb(206, 8, 8);
+    background: #5e5e5e;
   }
-
-  :active {
-    box-shadow: -2px -2px 5px 1px black;
+  a {
+    text-decoration: none;
+    color: white;
   }
 `;
 
 export const ViewButton = () => {
   return (
-    <Link to="/viewText">
-      <UploadButton>View uploads</UploadButton>
-    </Link>
+    <UploadButton>
+      <Link to="/viewText">View uploads</Link>
+    </UploadButton>
   );
 };
