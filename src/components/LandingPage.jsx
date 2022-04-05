@@ -78,21 +78,6 @@ export const LandingPage = () => {
             developed by engineers at Microsoft and made available though
             Microsoft Azure A.I.
           </p>
-          {/* <p>
-            This solution provides an interface through which student answer
-            booklets which have been either scanned or captured as an image can
-            be uploaded.
-
-            Upon uploading of answer booklets, a marking guide (document
-            containing the right answers to exam/ test questions) is also
-            uploaded
-
-            Based on keyphrases found in this marking guide, student answer
-            booklets will be graded accordingly
-
-            Results of grading can be viewed or printed as a spreadsheet or pdf
-            document
-          </p> */}
           <a href="https://github.com/Fiewor/ai-grader">
             Read more on how it works
           </a>
