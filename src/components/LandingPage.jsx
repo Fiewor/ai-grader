@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 const Home = styled.div`
   display: flex;
@@ -31,14 +32,19 @@ const Home = styled.div`
   }
 `;
 
+const HeadingText = styled.h1`
+  padding: 0.3rem 1rem;
+`;
+
 const DetailsSection = styled.div`
   display: flex;
   flex-direction: column;
   background: #959595;
   color: white;
   width: 100vw;
-  padding: 3rem 2rem;
+  padding: 10vh 2rem;
   text-align: center;
+  font-family: "Ubuntu", sans-serif;
   p {
     @media screen and (min-width: 768px) {
       font-size: 1.3rem;
@@ -67,16 +73,16 @@ export const LandingPage = () => {
   return (
     <Home>
       <div>
-        <h1>Welcome to AI-Grader!</h1>
+        <HeadingText>Welcome to AI-Grader!</HeadingText>
         <p>
           AI-Grader is a solution that uses artificial intelligence to grade
-          handwritten answer booklets.
+          paper-based tests.
         </p>
         <DetailsSection>
           <p>
             AI-Grader uses state-of-the-art Artificial Intelligence models
-            developed by engineers at Microsoft and made available though
-            Microsoft Azure A.I.
+            developed by engineers at Microsoft and made available though Azure
+            A.I.
           </p>
           <a href="https://github.com/Fiewor/ai-grader">
             Read more on how it works

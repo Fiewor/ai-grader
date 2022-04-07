@@ -33,7 +33,6 @@ const NavLinks = styled.ul`
 const LinkItem = styled.li`
   color: white;
   font-size: 1rem;
-  text-decoration: none;
   @media screen and (min-width: 768px) {
     font-size: 1.6rem;
   }
