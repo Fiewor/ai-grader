@@ -5,7 +5,6 @@ import ViewButton from "./ViewButton";
 const DropArea = (mark) => {
   return (
     <div className="upload-area">
-      {/* <UploadBox section="mark" /> */}
       <UploadBox section="answer" />
 
       <ViewButton />
