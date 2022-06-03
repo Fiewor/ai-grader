@@ -1,6 +1,7 @@
-export { DisplayArea } from "./DisplayArea";
+export { DisplayText } from "./DisplayText";
+export { DisplayGrade } from "./DisplayGrade";
 export { DropArea } from "./DropArea";
-export { Footer, A } from "./Footer";
+export { Footer, Anchor } from "./Footer";
 export { Nav } from "./Nav";
 export { Form } from "./Form";
 export { UploadBox } from "./UploadBox";

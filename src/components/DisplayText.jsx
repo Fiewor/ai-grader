@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
 
-export const DisplayArea = () => {
+export const DisplayText = () => {
   const [text, setText] = useState([]);
   const [loading, setLoading] = useState(undefined);
 
-  //! TO-DO: after grading logic is done, display result of grading
   useEffect(() => {
     const getText = async () => {
       let result = await axios.get(
@@ -16,12 +15,16 @@ export const DisplayArea = () => {
             : process.env.REACT_APP_LOCAL_API_URL
         }viewText`
       );
-      setText([result.data]);
+      setText(result.data.page);
       setLoading(true);
     };
     getText();
+
+    // return () => {
+    //   setText([]);
+    //   setLoading(false);
+    // };
   }, []);
-  console.log("data", text);
 
   return (
     <>
@@ -35,14 +38,7 @@ export const DisplayArea = () => {
           style={{ width: "70%" }}
         ></Player>
       ) : (
-        text.map((result, _id) => (
-          <div>
-            <h2 key={_id}>{result.readText}</h2>
-            {result.keyPhrases.map((item, id) => (
-              <p key={id}>{item}</p>
-            ))}
-          </div>
-        ))
+        text.map((block, id) => <p key={id}>{block.text}</p>)
       )}
     </>
   );

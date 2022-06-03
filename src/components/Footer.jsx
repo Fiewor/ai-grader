@@ -10,7 +10,7 @@ const Foot = styled.footer`
   }
 `;
 
-export const A = styled.a`
+export const Anchor = styled.a`
   text-decoration: none;
 `;
 
@@ -19,14 +19,14 @@ export const Footer = () => {
     <Foot>
       <p>
         Made with ❤ and React by
-        <A
+        <Anchor
           href="https://github.com/Fiewor"
           target="_blank"
           rel="noreferrer noopener"
         >
           {" "}
           John Fiewor{" "}
-        </A>
+        </Anchor>
         © {year}
       </p>
     </Foot>

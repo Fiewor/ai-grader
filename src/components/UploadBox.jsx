@@ -20,6 +20,7 @@ export const UploadBox = ({ section }) => {
     });
 
     let noFile = false;
+    let uploaded = false;
     axios
       .post(
         `${
@@ -34,6 +35,9 @@ export const UploadBox = ({ section }) => {
         noFile = res.data.noFile;
         noFile && alert(`Choose at least one file before uploading`);
         noFile = false;
+        uploaded = res.data.uploaded;
+        uploaded && alert(`File(s) uploaded successfully`);
+        uploaded = false;
       })
       .catch((error) => console.log(error));
   };

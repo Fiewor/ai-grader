@@ -4,8 +4,9 @@ import styled from "styled-components";
 
 const UploadButton = styled.button`
   background: #959595;
-  padding: 0.8rem 1.5rem;
+  padding: 1rem 1.5rem;
   border: none;
+  margin: 0.2rem;
 
   :hover {
     cursor: pointer;
@@ -17,10 +18,10 @@ const UploadButton = styled.button`
   }
 `;
 
-export const ViewButton = () => {
+export const ViewButton = ({ children, path }) => {
   return (
     <UploadButton>
-      <Link to="/viewText">View uploads</Link>
+      <Link to={path}>{children}</Link>
     </UploadButton>
   );
 };

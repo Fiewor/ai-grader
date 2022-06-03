@@ -1,7 +1,8 @@
 import React from "react";
 import {
   DropArea,
-  DisplayArea,
+  DisplayText,
+  DisplayGrade,
   Nav,
   Form,
   Footer,
@@ -19,12 +20,13 @@ function App() {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="grade" element={<DropArea />} />
           <Route path="login" element={<Form />} />
-          <Route path="viewText" element={<DisplayArea />} />
+          <Route path="viewText" element={<DisplayText />} />
+          <Route path="viewGrade" element={<DisplayGrade />} />
           <Route
             path="*"
             element={
               <main style={{ padding: "1rem" }}>
-                <p>There's nothing here!</p>
+                <p>Ooops. There's nothing here!</p>
               </main>
             }
           />
