@@ -20,7 +20,7 @@ export const UploadBox = ({ section }) => {
     });
 
     let noFile = false;
-    let uploaded = false;
+
     axios
       .post(
         `${
@@ -31,17 +31,20 @@ export const UploadBox = ({ section }) => {
         formData
       )
       .then((res) => {
-        console.log(res);
+        console.log("res", res);
         noFile = res.data.noFile;
-        noFile && alert(`Choose at least one file before uploading`);
-        noFile = false;
-        uploaded = res.data.uploaded;
-        uploaded && alert(`File(s) uploaded successfully`);
-        uploaded = false;
+        if (noFile) {
+          alert(`Choose at least one file before uploading`);
+          noFile = false;
+          return;
+        }
+        res.status !== 200
+          ? alert(`Unable to upload files to local directory`)
+          : alert(`${res.data}`);
       })
       .catch((error) => console.log(error));
   };
-  console.log(process.env.NODE_ENV);
+
   return (
     <form className="upload-form">
       <textarea
