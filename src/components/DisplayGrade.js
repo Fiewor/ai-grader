@@ -9,11 +9,7 @@ export const DisplayGrade = () => {
   useEffect(() => {
     const getGrade = async () => {
       let result = await axios.get(
-        `${
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_LIVE_API_URL
-            : process.env.REACT_APP_LOCAL_API_URL
-        }viewGrade`
+        `${process.env.REACT_APP_LOCAL_API_URL}viewGrade`
       );
       setScore({
         arr: result.data.arr,

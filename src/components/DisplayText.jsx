@@ -9,11 +9,7 @@ export const DisplayText = () => {
   useEffect(() => {
     const getText = async () => {
       let result = await axios.get(
-        `${
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_LIVE_API_URL
-            : process.env.REACT_APP_LOCAL_API_URL
-        }viewText`
+        `${process.env.REACT_APP_LOCAL_API_URL}viewText`
       );
       setText(result.data.page);
       setLoading(true);

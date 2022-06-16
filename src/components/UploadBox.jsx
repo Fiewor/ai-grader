@@ -77,11 +77,7 @@ export const UploadBox = ({ section }) => {
 
     axios
       .post(
-        `${
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_LIVE_API_URL
-            : process.env.REACT_APP_LOCAL_API_URL
-        }uploads/${section}`,
+        `${process.env.REACT_APP_LOCAL_API_URL}uploads/${section}`,
         formData
       )
       .then((res) => {
