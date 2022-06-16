@@ -3,7 +3,7 @@ import axios from "axios";
 import { Player } from "@lottiefiles/react-lottie-player";
 
 export const DisplayGrade = () => {
-  const [score, setScore] = useState({ grade: 0, totalPoints: 0 });
+  const [score, setScore] = useState({ arr: [], grade: 0, totalPoints: 0 });
   const [loading, setLoading] = useState(undefined);
 
   useEffect(() => {
@@ -16,6 +16,7 @@ export const DisplayGrade = () => {
         }viewGrade`
       );
       setScore({
+        arr: result.data.arr,
         grade: result.data.grade,
         totalPoints: result.data.totalPoints,
       });
@@ -36,7 +37,17 @@ export const DisplayGrade = () => {
           style={{ width: "70%" }}
         ></Player>
       ) : (
-        <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
+        <div>
+          <ul>
+            {score.arr.map((score) => (
+              <li key={score.id}>
+                Score for question {score.id}: {score.grade}/
+                {score.pointsAwardable}
+              </li>
+            ))}
+          </ul>
+          <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
+        </div>
       )}
     </>
   );

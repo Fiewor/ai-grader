@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 body {
@@ -11,68 +11,4 @@ body {
   justify-content: center;
   align-items: center;
   background-image: url("https://transparenttextures.com/patterns/bright-squares.png");
-}
-
-.upload-area {
-  /* background-color: blue; */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 45vw;
-  height: 40vh;
-  margin: 2rem auto 0;
-  padding: 0.5em;
-}
-
-.upload-area textarea {
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  border-radius: 25px;
-  box-shadow: 0 0 5px 4px rgb(161, 161, 161);
-  background-color: #fff;
-  font-size: 1.5rem;
-  outline: none;
-  resize: none;
-  position: relative;
-  text-align: center;
-}
-
-input[type="file"] {
-  font-size: 1.2rem;
-  position: absolute;
-}
-
-.upload-icon-container {
-  cursor: pointer;
-  position: absolute;
-  bottom: 3em;
-  align-self: flex-end;
-  padding-right: 0.2em;
-}
-
-.upload-icon {
-  color: rgb(23, 74, 167);
-}
-
-footer {
-  position: fixed;
-  font-size: 1.5rem;
-  text-align: center;
-  color: rgb(90, 84, 84);
-  bottom: 1rem;
-  margin: 0 auto;
-}
-
-@media screen and (max-width: 768px) {
-  .upload-area {
-    width: 70vw;
-  }
-  input[type="file"] {
-    font-size: 0.7rem;
-  }
-  footer {
-    font-size: 1rem;
-  }
 }

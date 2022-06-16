@@ -1,7 +1,60 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
+
+const Textarea = styled.textarea`
+  width: 100%;
+  height: 90%;
+  padding: 10px;
+  margin: 0.1rem;
+  border-radius: 20px;
+  box-shadow: 0 0 5px 4px rgb(161, 161, 161);
+  background-color: #fff;
+  font-size: 1rem;
+  outline: none;
+  resize: none;
+  position: relative;
+  text-align: center;
+  display: relative;
+`;
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  min-width: 40vw;
+  min-height: max-content;
+  overflow: hidden;
+
+  input[type="file"] {
+    position: absolute;
+    font-size: 0.7rem;
+  }
+
+  .upload-icon-container {
+    cursor: pointer;
+    position: absolute;
+    align-self: flex-end;
+    transform: translateY(2em);
+  }
+
+  .file-input {
+    cursor: pointer;
+    padding: 2rem;
+  }
+
+  .upload-icon {
+    color: rgb(23, 74, 167);
+  }
+
+  @media screen and (min-width: 768px) {
+    input[type="file"] {
+      font-size: 1rem;
+    }
+  }
+`;
 
 export const UploadBox = ({ section }) => {
   const [files, setFiles] = useState([]);
@@ -10,6 +63,7 @@ export const UploadBox = ({ section }) => {
     setFiles(Array.from(event.target.files));
   };
   console.log(files);
+
   const sendFiles = (event) => {
     event.preventDefault();
 
@@ -46,8 +100,8 @@ export const UploadBox = ({ section }) => {
   };
 
   return (
-    <form className="upload-form">
-      <textarea
+    <Form>
+      <Textarea
         readOnly="yes"
         name="content"
         id=""
@@ -69,6 +123,6 @@ export const UploadBox = ({ section }) => {
       >
         <PublishIcon className="upload-icon" />
       </Button>
-    </form>
+    </Form>
   );
 };

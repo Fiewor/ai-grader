@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const NavBar = styled.nav`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+  font-family: "Roboto", sans-serif;
   background: #000;
-  color: white;
+  color: rgb(255, 255, 255);
   min-height: 8vh;
   display: flex;
   justify-content: space-between;
@@ -15,7 +17,10 @@ const NavBar = styled.nav`
 const BrandName = styled.nav`
   font-size: 1.5rem;
   padding-left: 3vw;
-  color: white;
+  color: rgb(255, 255, 255);
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
   @media screen and (min-width: 768px) {
     font-size: 2.5rem;
   }
@@ -34,6 +39,9 @@ const LinkItem = styled.li`
   color: white;
   font-size: 1rem;
   text-decoration: none;
+  &:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
   @media screen and (min-width: 768px) {
     font-size: 1.6rem;
   }

@@ -17,40 +17,6 @@ button:hover {
   cursor: pointer;
 }
 
-/* UploadBox */
-.upload-form {
-  margin: 0 auto;
-  min-width: 40vw;
-  min-height: max-content;
-  font-size: 1.5em;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-
-.upload-form div {
-  margin: 2vh 0;
-}
-
-.upload-form div label {
-  text-align: left;
-  display: block;
-  font-size: 1.25em;
-  padding: 0.3em 0;
-}
-
-.upload-form textarea {
-  font-size: 1rem;
-  outline: none;
-  box-shadow: none;
-}
-
-.file-input {
-  cursor: pointer;
-  padding: 2rem;
-}
-
 /* Form */
 .login-input {
   padding: 1em 2em;

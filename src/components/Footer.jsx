@@ -5,6 +5,10 @@ const year = new Date().getFullYear();
 
 const Foot = styled.footer`
   font-size: 0.8rem;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 0;
   @media screen and (min-width: 768px) {
     font-size: 1.1rem;
   }
