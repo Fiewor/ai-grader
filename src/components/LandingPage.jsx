@@ -3,8 +3,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const Home = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Indie+Flower&family=Raleway:wght@300&family=Roboto:wght@300&family=Roboto+Mono:ital,wght@1,300&family=Raleway:wght@300&display=swap");
-  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   align-content: center;

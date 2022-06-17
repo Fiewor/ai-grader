@@ -76,10 +76,7 @@ export const UploadBox = ({ section }) => {
     let noFile = false;
 
     axios
-      .post(
-        `${process.env.REACT_APP_LOCAL_API_URL}uploads/${section}`,
-        formData
-      )
+      .post(`http://localhost:3001/uploads/${section}`, formData)
       .then((res) => {
         console.log("res", res);
         noFile = res.data.noFile;

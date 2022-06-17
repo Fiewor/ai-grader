@@ -1,6 +1,23 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
+
+const GradeContainer = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100vw;
+  height: 70vh;
+`;
+
+const ListItem = styled.li`
+  padding: 0.4rem;
+`;
 
 export const DisplayGrade = () => {
   const [score, setScore] = useState({ arr: [], grade: 0, totalPoints: 0 });
@@ -8,9 +25,8 @@ export const DisplayGrade = () => {
 
   useEffect(() => {
     const getGrade = async () => {
-      let result = await axios.get(
-        `${process.env.REACT_APP_LOCAL_API_URL}viewGrade`
-      );
+      let result = await axios.get(`http://localhost:3001/viewGrade`);
+      console.log("received grade data", result.data);
       setScore({
         arr: result.data.arr,
         grade: result.data.grade,
@@ -33,17 +49,17 @@ export const DisplayGrade = () => {
           style={{ width: "70%" }}
         ></Player>
       ) : (
-        <div>
+        <GradeContainer>
           <ul>
             {score.arr.map((score) => (
-              <li key={score.id}>
+              <ListItem key={score.id}>
                 Score for question {score.id}: {score.grade}/
                 {score.pointsAwardable}
-              </li>
+              </ListItem>
             ))}
           </ul>
           <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
-        </div>
+        </GradeContainer>
       )}
     </>
   );
