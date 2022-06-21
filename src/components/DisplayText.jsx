@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
+// import { useReactToPrint } from "react-to-print";
 
 const TextContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
@@ -25,6 +26,18 @@ const Text = styled.p`
   }
 `;
 
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  color: white;
+  background: rgb(28, 140, 214);
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
+  &:active {
+    box-shadow: 0px 0px 1px 1px rgb(0, 0, 0);
+  }
+`;
+
 export const DisplayText = () => {
   const [text, setText] = useState([]);
   const [loading, setLoading] = useState(undefined);
@@ -44,6 +57,20 @@ export const DisplayText = () => {
     getText();
   }, []);
 
+  const handleDownload = () => console.log("working");
+  // useReactToPrint({
+  //   onPrintError: (error) => console.log(error),
+  //   content: () => text,
+  //   removeAfterPrint: true,
+  //   fonts: [
+  //     {
+  //       family: "Roboto Mono",
+  //       source:
+  //         "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap",
+  //     },
+  //   ],
+  // });
+
   return (
     <>
       {!loading ? (
@@ -56,11 +83,14 @@ export const DisplayText = () => {
           style={{ width: "70%" }}
         ></Player>
       ) : (
-        <TextContainer>
-          {text.map((line, id) => (
-            <Text key={id}>{line}</Text>
-          ))}
-        </TextContainer>
+        <>
+          <TextContainer>
+            {text.map((line, id) => (
+              <Text key={id}>{line}</Text>
+            ))}
+          </TextContainer>
+          <Button onClick={handleDownload}>Download</Button>
+        </>
       )}
     </>
   );
