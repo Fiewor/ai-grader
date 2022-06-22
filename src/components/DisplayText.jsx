@@ -3,6 +3,7 @@ import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { useReactToPrint } from "react-to-print";
+import Html2Pdf from "js-html2pdf";
 
 const TextContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
@@ -24,6 +25,12 @@ const Text = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 1rem;
   }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 `;
 
 const Button = styled.button`
@@ -64,6 +71,21 @@ export const DisplayText = () => {
     removeAfterPrint: true,
   });
 
+  const handleDownload = useReactToPrint({
+    onPrintError: (error) => console.log(error),
+    content: () => ref.current,
+    removeAfterPrint: true,
+    print: async (printIframe) => {
+      const document = printIframe.contentDocument;
+      if (document) {
+        const html = document.getElementsByTagName("html")[0];
+        console.log(html);
+        const exporter = new Html2Pdf(html);
+        (await exporter.getPdf(true)) && alert("downloading pdf file...");
+      }
+    },
+  });
+
   return (
     <>
       {!loading ? (
@@ -82,7 +104,10 @@ export const DisplayText = () => {
               <Text key={id}>{line}</Text>
             ))}
           </TextContainer>
-          <Button onClick={handlePrint}>Print</Button>
+          <ButtonContainer>
+            <Button onClick={handlePrint}>Print</Button>
+            <Button onClick={handleDownload}>Download</Button>
+          </ButtonContainer>
         </>
       )}
     </>

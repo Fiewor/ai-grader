@@ -85,7 +85,6 @@ export const UploadBox = ({ section }) => {
         formData
       )
       .then((res) => {
-        console.log("res", res);
         noFile = res.data.noFile;
         if (noFile) {
           alert(`Choose at least one file before uploading`);
@@ -93,7 +92,7 @@ export const UploadBox = ({ section }) => {
           return;
         }
         res.status !== 200
-          ? alert(`Unable to upload files to local directory`)
+          ? alert(`Unable to upload files`)
           : alert(`${res.data}`);
       })
       .catch((error) => console.log(error));
