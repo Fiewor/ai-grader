@@ -47,6 +47,7 @@ const Button = styled.button`
 
 export const DisplayText = () => {
   const [text, setText] = useState([]);
+  const [fileName, setFileName] = useState(null);
   const [loading, setLoading] = useState(undefined);
   const ref = useRef();
 
@@ -60,6 +61,7 @@ export const DisplayText = () => {
         }viewText`
       );
       setText(result.data.page.rawText);
+      setFileName(result.data.page.fileName);
       setLoading(true);
     };
     getText();
@@ -80,7 +82,9 @@ export const DisplayText = () => {
       if (document) {
         const html = document.getElementsByTagName("html")[0];
         console.log(html);
-        const exporter = new Html2Pdf(html);
+        const exporter = new Html2Pdf(html, {
+          filename: fileName ? fileName : "file",
+        });
         (await exporter.getPdf(true)) && alert("downloading pdf file...");
       }
     },
