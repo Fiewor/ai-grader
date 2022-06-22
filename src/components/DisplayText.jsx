@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
-// import { useReactToPrint } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 
 const TextContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
@@ -41,6 +41,7 @@ const Button = styled.button`
 export const DisplayText = () => {
   const [text, setText] = useState([]);
   const [loading, setLoading] = useState(undefined);
+  const ref = useRef();
 
   useEffect(() => {
     const getText = async () => {
@@ -57,19 +58,11 @@ export const DisplayText = () => {
     getText();
   }, []);
 
-  const handleDownload = () => console.log("working");
-  // useReactToPrint({
-  //   onPrintError: (error) => console.log(error),
-  //   content: () => text,
-  //   removeAfterPrint: true,
-  //   fonts: [
-  //     {
-  //       family: "Roboto Mono",
-  //       source:
-  //         "https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap",
-  //     },
-  //   ],
-  // });
+  const handlePrint = useReactToPrint({
+    onPrintError: (error) => console.log(error),
+    content: () => ref.current,
+    removeAfterPrint: true,
+  });
 
   return (
     <>
@@ -84,12 +77,12 @@ export const DisplayText = () => {
         ></Player>
       ) : (
         <>
-          <TextContainer>
+          <TextContainer ref={ref}>
             {text.map((line, id) => (
               <Text key={id}>{line}</Text>
             ))}
           </TextContainer>
-          <Button onClick={handleDownload}>Download</Button>
+          <Button onClick={handlePrint}>Print</Button>
         </>
       )}
     </>
