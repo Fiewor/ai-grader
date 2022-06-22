@@ -117,3 +117,5 @@ export const DisplayText = () => {
     </>
   );
 };
+
+// export { DisplayText, handlePrint, handleDownload };
