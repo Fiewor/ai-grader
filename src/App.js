@@ -7,6 +7,7 @@ import {
   Form,
   Footer,
   LandingPage,
+  TextView,
 } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -20,8 +21,9 @@ function App() {
           <Route path="/" exact element={<LandingPage />} />
           <Route path="grade" element={<DropArea />} />
           <Route path="login" element={<Form />} />
-          <Route path="viewText" element={<DisplayText />} />
+          <Route path="texts" element={<DisplayText />} />
           <Route path="viewGrade" element={<DisplayGrade />} />
+          <Route path="texts/:id" element={<TextView />} />
           <Route
             path="*"
             element={
@@ -31,7 +33,7 @@ function App() {
             }
           />
         </Routes>
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </Router>
   );

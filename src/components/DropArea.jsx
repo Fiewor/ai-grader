@@ -46,6 +46,10 @@ const ButtonContainer = styled.div`
   height: 9vh;
 `;
 
+// const ButtonDiv = styled.div`
+//   &: hover;
+// `;
+
 export const DropArea = (mark) => {
   return (
     <UploadArea>
@@ -72,7 +76,10 @@ export const DropArea = (mark) => {
       <UploadBox section="answer" />
       <UploadBox section="mark" />
       <ButtonContainer>
-        <ViewButton children="View text" path="/viewText" />
+        {/* <ButtonDiv> */}
+        <ViewButton children="View text" path="/texts" />
+        {/* <ViewButton children="View text" path="/viewText" /> */}
+        {/* </ButtonDiv> */}
         <ViewButton children="View grade" path="/viewGrade" />
       </ButtonContainer>
     </UploadArea>
