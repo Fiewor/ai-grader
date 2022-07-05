@@ -40,7 +40,7 @@ const Instructions = styled.div`
   }
 `;
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 9vh;

@@ -8,3 +8,4 @@ export { UploadBox } from "./UploadBox";
 export { ViewButton } from "./ViewButton";
 export { LandingPage } from "./LandingPage";
 export { TextView } from "./TextView";
+export { TextExtract } from "./TextExtract";

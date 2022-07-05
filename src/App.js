@@ -8,6 +8,7 @@ import {
   Footer,
   LandingPage,
   TextView,
+  TextExtract,
 } from "./components";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<LandingPage />} />
           <Route path="grade" element={<DropArea />} />
+          <Route path="text" element={<TextExtract />} />
           <Route path="login" element={<Form />} />
           <Route path="texts" element={<DisplayText />} />
           <Route path="viewGrade" element={<DisplayGrade />} />

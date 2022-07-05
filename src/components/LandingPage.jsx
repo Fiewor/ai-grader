@@ -69,7 +69,8 @@ const LinkSection = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   text-align: left;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 2rem;
   padding: 1rem 0;
   a {
     background: rgb(94, 94, 94);
@@ -108,7 +109,8 @@ export const LandingPage = () => {
         </DetailsSection>
 
         <LinkSection>
-          <Link to="/grade">Try it out</Link>
+          <Link to="/text">Text-Extractor</Link>
+          <Link to="/grade">Grader</Link>
         </LinkSection>
       </div>
     </Home>
