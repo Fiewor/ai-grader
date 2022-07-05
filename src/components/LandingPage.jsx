@@ -76,8 +76,13 @@ const LinkSection = styled.div`
     background: rgb(94, 94, 94);
     padding: 0.5rem 0.8rem;
     margin-bottom: 1rem;
+    border-radius: 20px;
+    box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
     &:hover {
       background: rgb(94, 94, 94, 0.8);
+    }
+    &:active {
+      box-shadow: 0px 0px 1px 0px rgb(0, 0, 0);
     }
     @media screen and (min-width: 768px) {
       padding: 0.8rem 1rem;

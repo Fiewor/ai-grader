@@ -38,11 +38,15 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
   margin-bottom: 1rem;
   color: white;
-  background: rgb(28, 140, 214);
+  background: rgba(28, 140, 214, 1);
   border: none;
+  border-radius: 20px;
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
+  &:hover {
+    background: rgba(28, 140, 214, 0.8);
+  }
   &:active {
-    box-shadow: 0px 0px 1px 1px rgb(0, 0, 0);
+    box-shadow: 0px 0px 1px 0px rgb(0, 0, 0);
   }
 `;
 

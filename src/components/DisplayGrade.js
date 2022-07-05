@@ -13,6 +13,10 @@ const GradeContainer = styled.div`
   gap: 1rem;
   width: 100vw;
   height: 70vh;
+
+  @media screen and (min-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const ListItem = styled.li`
