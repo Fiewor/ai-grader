@@ -59,7 +59,7 @@ export const DisplayGrade = () => {
           <ul>
             {score.arr.map((score) => (
               <ListItem key={score.id}>
-                Score for question {score.id}: {score.score}/
+                Score for question {score.id + 1}: {score.score}/
                 {score.pointsAwardable}
               </ListItem>
             ))}
