@@ -24,6 +24,7 @@ A grading system that uses Artificial Intelligence to identify scanned student a
 - React
 - MUI
 - Styled-components
+- Project Management: <https://trello.com/b/kYooIU88/ai-grader>
 
 ### HOW IT WORKS
 
