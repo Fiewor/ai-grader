@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 const UploadButton = styled.button`
   background: #959595;
-  padding: 0.5rem 1rem;
+  padding: 0.01rem 1.5rem;
   border: none;
-  margin: 0.2rem;
+  margin: 0.2rem 0.5rem;
   border-radius: 20px;
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
   @media screen and (min-width: 768px) {
@@ -22,6 +22,8 @@ const UploadButton = styled.button`
   a {
     text-decoration: none;
     color: white;
+    padding: 0;
+    margin: 0;
   }
 `;
 
