@@ -9,10 +9,12 @@ const Home = styled.div`
   justify-content: center;
   gap: 1rem;
   h1 {
-    padding: 1rem 0;
     text-align: center;
+    padding: 1rem 0;
+    margin-top: 1rem;
     font-size: 1.7rem;
     @media screen and (min-width: 768px) {
+      padding: 2rem 0;
       font-size: 2.5rem;
     }
   }
@@ -44,8 +46,12 @@ const DetailsSection = styled.div`
   background: #959595;
   color: white;
   width: 100vw;
-  padding: 3rem 2rem;
+  padding: 2rem 1rem;
+  margin: 1rem 0;
   font-family: "Raleway", sans-serif;
+  @media screen and (min-width: 768px) {
+    padding: 5rem 2rem;
+  }
   p {
     @media screen and (min-width: 768px) {
       font-size: 1.2rem;

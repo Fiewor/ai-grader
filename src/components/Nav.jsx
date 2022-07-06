@@ -53,14 +53,14 @@ export const Nav = () => {
       <Link to="/">
         <BrandName>AI-Grader</BrandName>
       </Link>
-      <NavLinks>
+      {/* <NavLinks>
         <Link to="/">
           <LinkItem>Home</LinkItem>
         </Link>
         <Link to="/login">
           <LinkItem>Login</LinkItem>
         </Link>
-      </NavLinks>
+      </NavLinks> */}
     </NavBar>
   );
 };
