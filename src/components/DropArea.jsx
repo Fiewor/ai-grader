@@ -51,6 +51,10 @@ export const DropArea = (mark) => {
             <Item>
               Wait for alert notification confirming successful upload
             </Item>
+            <Item>
+              Wait for about 5 minutes for reading and keyword extraction to be
+              carried out
+            </Item>
             <Item>Proceed to view extracted text or grade</Item>
           </Group>
           <Group>
