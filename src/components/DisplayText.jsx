@@ -11,9 +11,19 @@ const List = styled.div`
   gap: 1rem;
   padding: 0.3rem;
   width: 100%;
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
   height: 100%;
   &:first-of-type {
     margin-top: 3rem;
+  }
+`;
+
+const P = styled.p`
+  margin-top: 2rem;
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
   }
 `;
 
@@ -53,6 +63,7 @@ export const DisplayText = () => {
         ></Player>
       ) : (
         <>
+          <P>Click on a document's id or filename to view its text</P>
           {data.map((arr) => (
             <List key={arr._id}>
               <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
