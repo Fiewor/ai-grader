@@ -27,11 +27,7 @@ const Form = styled.div`
   min-width: 40vw;
   min-height: max-content;
   overflow: hidden;
-
-  input[type="file"] {
-    position: absolute;
-    font-size: 0.7rem;
-  }
+  padding: 0.5rem 5rem;
 
   .upload-icon-container {
     cursor: pointer;
@@ -40,18 +36,38 @@ const Form = styled.div`
     transform: translateY(2em);
   }
 
-  .file-input {
-    cursor: pointer;
-    padding: 2rem;
-  }
-
   .upload-icon {
     color: rgb(23, 74, 167);
+    &:hover {
+      color: rgb(4, 26, 66);
+    }
+    &:active {
+      color: rgb(172, 40, 40);
+    }
   }
+`;
 
-  @media screen and (min-width: 768px) {
-    input[type="file"] {
-      font-size: 1rem;
+const Input = styled.input.attrs((props) => ({ type: "file" }))`
+  position: absolute;
+  padding: 2em 0 0 1em;
+  &::file-selector-button {
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    &:hover {
+      border-color: black;
+    }
+    &:active {
+      background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
     }
   }
 `;
@@ -108,9 +124,9 @@ export const UploadBox = ({ section }) => {
         rows="3"
         placeholder={`Upload ${section} sheets here`}
       />
-      <input
+      <Input
         onChange={fileUpload}
-        type="file"
+        // type="file"
         name="file"
         multiple
         className="file-input"
