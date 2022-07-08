@@ -33,13 +33,7 @@ export const DisplayText = () => {
 
   useEffect(() => {
     const getTextData = async () => {
-      let result = await axios.get(
-        `${
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_LIVE_API_URL
-            : process.env.REACT_APP_LOCAL_API_URL
-        }texts`
-      );
+      let result = await axios.get(`/api/texts`);
       if (result.status !== 200) {
         alert(`Unable to retrieve text from database`);
       } else {

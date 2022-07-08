@@ -92,14 +92,7 @@ export const UploadBox = ({ section }) => {
     let noFile = false;
 
     axios
-      .post(
-        `${
-          process.env.NODE_ENV === "production"
-            ? process.env.REACT_APP_LIVE_API_URL
-            : process.env.REACT_APP_LOCAL_API_URL
-        }uploads/${section}`,
-        formData
-      )
+      .post(`/api/uploads/${section}`, formData)
       .then((res) => {
         noFile = res.data.noFile;
         if (noFile) {

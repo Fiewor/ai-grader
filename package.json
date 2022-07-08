@@ -30,6 +30,7 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn run build"
   },
+  "proxy": "http:localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
