@@ -91,7 +91,7 @@ export const TextExtract = () => {
       </Instructions>
       <UploadBox section="text" />
       <ButtonContainer>
-        <ViewButton children="View text" path="/viewText" />
+        <ViewButton children="View text" path="/texts" />
       </ButtonContainer>
     </Container>
   );
