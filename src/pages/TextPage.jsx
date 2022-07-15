@@ -50,7 +50,7 @@ const Button = styled.button`
   }
 `;
 
-export const TextView = () => {
+export const TextPage = () => {
   const [text, setText] = useState([]);
   const [fileName, setFileName] = useState(null);
   const [loading, setLoading] = useState(undefined);
@@ -105,7 +105,7 @@ export const TextView = () => {
           autoplay
           loop
           mode="normal"
-          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION}
+          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_ONE}
           speed="1"
           style={{ width: "70%" }}
         ></Player>

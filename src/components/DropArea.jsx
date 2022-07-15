@@ -8,20 +8,7 @@ import {
   List,
   Group,
   Item,
-} from "./TextExtract";
-
-// const UploadArea = styled.div`
-//   width: 70vw;
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 0.5rem;
-//   padding: 0.5em;
-//   @media screen and (min-width: 768px) {
-//     font-size: 1.1rem;
-//     width: 100vw;
-//   }
-// `;
+} from "../pages/TextList";
 
 export const ButtonContainer = styled.div`
   display: flex;

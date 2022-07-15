@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
 
-const NavBar = styled.nav`
+const NavBar = styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
   font-family: "Roboto", sans-serif;
   background: #000;
@@ -47,20 +48,29 @@ const LinkItem = styled.li`
   }
 `;
 
-export const Nav = () => {
+export const Header = () => {
   return (
     <NavBar>
       <Link to="/">
         <BrandName>AI-Grader</BrandName>
       </Link>
-      {/* <NavLinks>
+      <NavLinks>
         <Link to="/">
           <LinkItem>Home</LinkItem>
         </Link>
         <Link to="/login">
-          <LinkItem>Login</LinkItem>
+          <LinkItem>
+            <FaSignInAlt />
+            Login
+          </LinkItem>
         </Link>
-      </NavLinks> */}
+        <Link to="/register">
+          <LinkItem>
+            <FaUser />
+            Register
+          </LinkItem>
+        </Link>
+      </NavLinks>
     </NavBar>
   );
 };

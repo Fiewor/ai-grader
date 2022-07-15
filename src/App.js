@@ -1,43 +1,49 @@
 import React from "react";
+import { DropArea, Header, Footer } from "./components";
+
 import {
-  DropArea,
   DisplayText,
   DisplayGrade,
-  Nav,
-  Form,
-  Footer,
   LandingPage,
-  TextView,
-  TextExtract,
-} from "./components";
+  TextList,
+  TextPage,
+  Login,
+  Register,
+} from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Nav />
-        <Routes>
-          <Route path="/" exact element={<LandingPage />} />
-          <Route path="grade" element={<DropArea />} />
-          <Route path="text" element={<TextExtract />} />
-          <Route path="login" element={<Form />} />
-          <Route path="texts" element={<DisplayText />} />
-          <Route path="viewGrade" element={<DisplayGrade />} />
-          <Route path="texts/:id" element={<TextView />} />
-          <Route
-            path="*"
-            element={
-              <main style={{ padding: "1rem" }}>
-                <p>Ooops. There's nothing here!</p>
-              </main>
-            }
-          />
-        </Routes>
-        {/* <Footer /> */}
-      </div>
-    </Router>
+    <>
+      <Router>
+        <div className="App">
+          <Header />
+          <Routes>
+            <Route path="/" exact element={<LandingPage />} />
+            <Route path="grade" element={<DropArea />} />
+            <Route path="text" element={<TextList />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="texts" element={<DisplayText />} />
+            <Route path="viewGrade" element={<DisplayGrade />} />
+            <Route path="texts/:id" element={<TextPage />} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>Ooops. There's nothing here!</p>
+                </main>
+              }
+            />
+          </Routes>
+          {/* <Footer /> */}
+        </div>
+      </Router>
+      {/* <ToastContainer /> */}
+    </>
   );
 }
 

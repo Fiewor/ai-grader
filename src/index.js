@@ -1,13 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-
-const root = document.getElementById('root')
+import React from "react";
+import ReactDOM from "react-dom";
+import { store } from "./app/store";
+import { Provider } from "react-redux";
+import App from "./App";
 
 ReactDOM.render(
-  <App />, root
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
-if(module.hot){
+if (module.hot) {
   module.hot.accept();
 }

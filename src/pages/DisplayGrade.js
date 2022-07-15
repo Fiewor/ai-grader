@@ -3,6 +3,16 @@ import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
 
+import { UploadBox, ViewButton } from "../components";
+
+const Container = styled.div`
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GradeContainer = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
   font-family: "Roboto", sans-serif;
@@ -23,6 +33,21 @@ const ListItem = styled.li`
   padding: 0.4rem;
 `;
 
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  & > * {
+    padding: 1rem 1.3rem;
+  }
+`;
+
+const playerStyle = {
+  background: "none",
+  width: "100%",
+  height: "100%",
+};
+
 export const DisplayGrade = () => {
   const [score, setScore] = useState({ arr: [], grade: 0, totalPoints: 0 });
   const [loading, setLoading] = useState(undefined);
@@ -42,15 +67,15 @@ export const DisplayGrade = () => {
   }, []);
 
   return (
-    <>
+    <Container>
       {!loading ? (
         <Player
           autoplay
           loop
           mode="normal"
-          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION}
+          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_TWO}
           speed="1"
-          style={{ width: "70%" }}
+          style={playerStyle}
         ></Player>
       ) : (
         <GradeContainer>
@@ -63,8 +88,13 @@ export const DisplayGrade = () => {
             ))}
           </ul>
           <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
+
+          <ButtonContainer>
+            <ViewButton children="View breakdown" path="/details" />
+            <ViewButton children="Upload to Google Sheets" path="" />
+          </ButtonContainer>
         </GradeContainer>
       )}
-    </>
+    </Container>
   );
 };
