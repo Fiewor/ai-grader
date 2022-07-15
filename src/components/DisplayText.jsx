@@ -33,6 +33,7 @@ export const DisplayText = () => {
 
   useEffect(() => {
     const getTextData = async () => {
+      // ! TO-DO: specify collection from which to retrieve texts
       let result = await axios.get(`/api/texts`);
       if (result.status !== 200) {
         alert(`Unable to retrieve text from database`);
