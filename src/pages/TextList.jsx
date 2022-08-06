@@ -1,6 +1,6 @@
 import React from "react";
 import { UploadBox, ViewButton } from "../components";
-import { ButtonContainer } from "./DropArea";
+import { ButtonContainer } from "../components/DropArea";
 import styled from "styled-components";
 
 export const Container = styled.div`
