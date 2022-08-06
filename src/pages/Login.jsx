@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
-import styled from "styled-components";
-import { Heading, Form, FormSection, FormGroup, Button } from "./Register";
+import {Container, Heading, Form, FormSection, FormGroup, Button } from "./Register";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +20,7 @@ export const Login = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Heading>
         <h1>
           <FaSignInAlt />
@@ -54,10 +53,10 @@ export const Login = () => {
             />
           </FormGroup>
           <FormGroup>
-            <Button type="submit" value="Register" className="login-button" />
+            <Button type="submit" value="Register" className="login-button">Submit</Button>
           </FormGroup>
         </Form>
       </FormSection>
-    </div>
+    </Container>
   );
 };

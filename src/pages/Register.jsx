@@ -1,16 +1,62 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
-export const Heading = styled.section``;
-export const Form = styled.form``;
-export const FormSection = styled.section``;
-export const FormGroup = styled.div``;
-export const Button = styled.button``;
+
+export const Container = styled.div`
+  width: 100vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+`
+export const Heading = styled.section`
+  width: 30%;
+  text-align: center;
+`;
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+export const FormSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+  height: 60%;
+  width: 70%;
+  font-size: 0.8rem;
+  
+  @media screen and (min-width: 768px) {
+    width: 30%;
+    font-size: 1rem;
+  }
+`;
+export const FormGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 0;
+  input{
+    border-radius: 10px;
+    border: solid 0.05px black;
+    padding: .5rem;
+    width: 60%;
+  }
+`;
+export const Button = styled.button`
+  margin: .5rem 0;
+  padding: .5rem;
+  border-radius: 10px;
+  color: white;
+`;
 
 export const Register = () => {
   const [formData, setFormData] = useState({
@@ -28,7 +74,8 @@ export const Register = () => {
 
   useEffect(() => {
     if (isError) {
-      toast.error(message);
+      console.log(message)
+      // toast.error(message);
     }
     if (isSuccess || user) {
       navigate("/");
@@ -48,12 +95,14 @@ export const Register = () => {
     e.preventDefault();
 
     if (password !== password2) {
-      toast.error("Passwords do not match");
+      console.log("Passwords do not match")
+      // toast.error("Passwords do not match");
     } else {
       const userData = {
         name,
         email,
         password,
+        password2
       };
 
       dispatch(register(userData));
@@ -71,7 +120,7 @@ export const Register = () => {
     ></Player>;
   }
   return (
-    <div>
+    <Container>
       <Heading>
         <h1>
           <FaUser />
@@ -95,12 +144,12 @@ export const Register = () => {
             />
           </FormGroup>
           <FormGroup>
-            <label htmlFor="name">Username</label>
+            <label htmlFor="name">Email</label>
             <input
               type="email"
               id="email"
               name="email"
-              value={name}
+              value={email}
               placeholder="Enter your email"
               onChange={onChange}
             />
@@ -125,11 +174,9 @@ export const Register = () => {
               placeholder="Confirm your password"
             />
           </FormGroup>
-          <FormGroup>
-            <Button type="submit" value="Register" className="login-button" />
-          </FormGroup>
         </Form>
+        <Button type="submit" value="Register" className="login-button">Submit</Button>
       </FormSection>
-    </div>
+    </Container>
   );
 };
