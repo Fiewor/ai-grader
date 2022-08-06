@@ -23,7 +23,7 @@ const BrandName = styled.nav`
     color: rgba(255, 255, 255, 0.9);
   }
   @media screen and (min-width: 768px) {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 `;
 
@@ -44,7 +44,7 @@ const LinkItem = styled.li`
     color: rgba(255, 255, 255, 0.9);
   }
   @media screen and (min-width: 768px) {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 `;
 

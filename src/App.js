@@ -1,5 +1,5 @@
 import React from "react";
-import { DropArea, Header, Footer } from "./components";
+import { Header, Footer } from "./components";
 
 import {
   DisplayText,
@@ -9,6 +9,7 @@ import {
   TextPage,
   Login,
   Register,
+  DropArea
 } from "./pages";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // import { ToastContainer } from "react-toastify";

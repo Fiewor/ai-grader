@@ -1,4 +1,3 @@
-export { DropArea } from "./DropArea";
 export { Footer, Anchor } from "./Footer";
 export { Header } from "./Header";
 export { UploadBox } from "./UploadBox";
