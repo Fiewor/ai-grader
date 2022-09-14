@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FaSignInAlt } from "react-icons/fa";
-import {Container, Heading, Form, FormSection, FormGroup, Button } from "./Register";
+import {
+  Container,
+  Heading,
+  Form,
+  FormSection,
+  FormGroup,
+  Button,
+} from "./Register";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -50,10 +57,13 @@ export const Login = () => {
               name="password"
               value={password}
               placeholder="Enter your password"
+              onChange={onChange}
             />
           </FormGroup>
           <FormGroup>
-            <Button type="submit" value="Register" className="login-button">Submit</Button>
+            <Button type="submit" value="Register" className="login-button">
+              Submit
+            </Button>
           </FormGroup>
         </Form>
       </FormSection>
