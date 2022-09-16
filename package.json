@@ -5,7 +5,6 @@
     "node": "16.x",
     "yarn": "1.x"
   },
-  "proxy": "http://localhost:3001",
   "private": true,
   "dependencies": {
     "@lottiefiles/react-lottie-player": "^3.4.2",
@@ -34,6 +33,7 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn run build"
   },
+  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",
