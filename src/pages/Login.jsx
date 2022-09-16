@@ -8,6 +8,9 @@ import {
   FormGroup,
   Button,
 } from "./Register";
+import { login, reset } from "../features/auth/authSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +18,25 @@ export const Login = () => {
     password: "",
   });
   const { email, password } = formData;
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (isError) {
+      console.log(message);
+      // toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -24,7 +46,18 @@ export const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+
+    dispatch(login(userData));
   };
+
+  if (isLoading) {
+    // return <Spinner></Spinner>
+  }
 
   return (
     <Container>
@@ -39,7 +72,7 @@ export const Login = () => {
       <FormSection>
         <Form onSubmit={onSubmit}>
           <FormGroup>
-            <label htmlFor="name">Username</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"

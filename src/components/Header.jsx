@@ -1,7 +1,57 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../features/auth/authSlice";
+
+export const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/");
+  };
+
+  return (
+    <NavBar>
+      <Link to="/">
+        <BrandName>AI-Grader</BrandName>
+      </Link>
+      <NavLinks>
+        {user ? (
+          <LinkItem>
+            <button onClick={onLogout}>
+              <FaSignInAlt />
+              Logout
+            </button>
+          </LinkItem>
+        ) : (
+          <>
+            <Link to="/">
+              <LinkItem>Home</LinkItem>
+            </Link>
+            <Link to="/login">
+              <LinkItem>
+                <FaSignInAlt />
+                Login
+              </LinkItem>
+            </Link>
+            <Link to="/register">
+              <LinkItem>
+                <FaUser />
+                Register
+              </LinkItem>
+            </Link>
+          </>
+        )}
+      </NavLinks>
+    </NavBar>
+  );
+};
 
 const NavBar = styled.header`
   @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
@@ -47,30 +97,3 @@ const LinkItem = styled.li`
     font-size: 1.3rem;
   }
 `;
-
-export const Header = () => {
-  return (
-    <NavBar>
-      <Link to="/">
-        <BrandName>AI-Grader</BrandName>
-      </Link>
-      <NavLinks>
-        <Link to="/">
-          <LinkItem>Home</LinkItem>
-        </Link>
-        <Link to="/login">
-          <LinkItem>
-            <FaSignInAlt />
-            Login
-          </LinkItem>
-        </Link>
-        <Link to="/register">
-          <LinkItem>
-            <FaUser />
-            Register
-          </LinkItem>
-        </Link>
-      </NavLinks>
-    </NavBar>
-  );
-};
