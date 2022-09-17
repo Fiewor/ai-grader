@@ -5,10 +5,12 @@ const year = new Date().getFullYear();
 
 const Foot = styled.footer`
   font-size: 0.8rem;
-  position: absolute;
   width: 100%;
   text-align: center;
   bottom: 0;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-size: 1rem;
 `;
 
 export const Anchor = styled.a`

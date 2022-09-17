@@ -52,7 +52,7 @@ export const DisplayText = () => {
           autoplay
           loop
           mode="normal"
-          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION}
+          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_ONE}
           speed="1"
           style={{ width: "70%" }}
         ></Player>

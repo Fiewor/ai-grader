@@ -50,7 +50,7 @@ const Button = styled.button`
   }
 `;
 
-export const TextView = () => {
+export const TextPage = () => {
   const [text, setText] = useState([]);
   const [fileName, setFileName] = useState(null);
   const [loading, setLoading] = useState(undefined);
@@ -68,8 +68,8 @@ export const TextView = () => {
         // because the backend uses find() which returns an array of elements
         // ? might switch from find() to findOne() after figuring out...
         // ? ...how to check availability of document using findOne()
-        setText(result.data[0].page.rawText);
-        setFileName(result.data[0].page.fileName);
+        setText(result.data.page.rawText);
+        setFileName(result.data.page.fileName);
         setLoading(true);
       }
     };
@@ -105,7 +105,7 @@ export const TextView = () => {
           autoplay
           loop
           mode="normal"
-          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION}
+          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_ONE}
           speed="1"
           style={{ width: "70%" }}
         ></Player>

@@ -1,5 +1,5 @@
 import React from "react";
-import { UploadBox, ViewButton } from "./index";
+import { UploadBox, ViewButton } from "../components";
 import { ButtonContainer } from "./DropArea";
 import styled from "styled-components";
 
@@ -13,13 +13,12 @@ export const Container = styled.div`
 export const Instructions = styled.div`
   @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@300&display=swap");
   font-family: "Raleway", sans-serif;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
-  margin: 2rem 0;
+  margin: 1rem 0;
 `;
 
 export const Title = styled.p`
@@ -35,7 +34,7 @@ export const List = styled.ul`
 `;
 
 export const Group = styled.div`
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   font-family: "Roboto", sans-serif;
 `;
 
@@ -47,7 +46,7 @@ export const Item = styled.li`
   }
 `;
 
-export const TextExtract = () => {
+export const TextList = () => {
   return (
     <Container>
       <Instructions>
