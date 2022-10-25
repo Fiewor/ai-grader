@@ -1,52 +1,34 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { UploadBox, ViewButton } from "../components";
 import { ButtonContainer } from "./DropArea";
 import styled from "styled-components";
-
-export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-export const Instructions = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@300&display=swap");
-  font-family: "Raleway", sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem;
-  margin: 1rem 0;
-`;
-
-export const Title = styled.p`
-  font-size: 1.5rem;
-  @media screen and (min-width: 768px) {
-    font-size: 2rem;
-  }
-`;
-
-export const List = styled.ul`
-  list-style: disc url("../icons/check_box_FILL0_wght400_GRAD0_opsz48.png")
-    inside;
-`;
-
-export const Group = styled.div`
-  padding: 0.5rem 0;
-  font-family: "Roboto", sans-serif;
-`;
-
-export const Item = styled.li`
-  font-size: 0.8rem;
-  padding: 0.2rem 0;
-  @media screen and (min-width: 768px) {
-    font-size: 1.2rem;
-  }
-`;
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset } from "../features/auth/authSlice";
 
 export const TextList = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+    if (isError) {
+      navigate("/login");
+      console.log(message);
+      // toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/text");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   return (
     <Container>
       <Instructions>
@@ -95,3 +77,47 @@ export const TextList = () => {
     </Container>
   );
 };
+
+// * Styled components
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Instructions = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Roboto:wght@300&display=swap");
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 1rem 0;
+`;
+
+export const Title = styled.p`
+  font-size: 1.5rem;
+  @media screen and (min-width: 768px) {
+    font-size: 2rem;
+  }
+`;
+
+export const List = styled.ul`
+  list-style: disc url("../icons/check_box_FILL0_wght400_GRAD0_opsz48.png")
+    inside;
+`;
+
+export const Group = styled.div`
+  padding: 0.5rem 0;
+  font-family: "Roboto", sans-serif;
+`;
+
+export const Item = styled.li`
+  font-size: 0.8rem;
+  padding: 0.2rem 0;
+  @media screen and (min-width: 768px) {
+    font-size: 1.2rem;
+  }
+`;

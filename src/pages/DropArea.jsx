@@ -1,27 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reset } from "../features/auth/authSlice";
 import { UploadBox, ViewButton } from "../components/index";
-import {
-  Container,
-  Instructions,
-  Title,
-  List,
-  Group,
-  Item,
-} from "./TextList";
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 9vh;
-`;
+import { Container, Instructions, Title, List, Group, Item } from "./TextList";
 
 export const DropArea = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+
+  useEffect(() => {
+    if (!user) {
+      navigate("/login");
+    }
+    if (isError) {
+      navigate("/login");
+      console.log(message);
+      // toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/grade");
+    }
+
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   return (
     <Container>
       <Instructions>
         <Title>How to use</Title>
-
         <List>
           <Group>
             <Item>
@@ -66,3 +77,10 @@ export const DropArea = () => {
     </Container>
   );
 };
+
+// * Styled components
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  height: 9vh;
+`;
