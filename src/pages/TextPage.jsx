@@ -6,50 +6,6 @@ import { useReactToPrint } from "react-to-print";
 import Html2Pdf from "js-html2pdf";
 import { useParams } from "react-router-dom";
 
-const TextContainer = styled.div`
-  @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
-  font-family: "Roboto Mono", monospace;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  text-align: left;
-  padding: 2rem;
-`;
-
-const Text = styled.p`
-  font-size: 0.8rem;
-  padding: 0.2rem 2rem;
-  border-bottom: 0.1px solid black;
-  &:first-child {
-    border-top: 0.1px solid black;
-  }
-  @media screen and (min-width: 768px) {
-    font-size: 1rem;
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
-const Button = styled.button`
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  color: white;
-  background: rgba(28, 140, 214, 1);
-  border: none;
-  border-radius: 20px;
-  box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
-  &:hover {
-    background: rgba(28, 140, 214, 0.8);
-  }
-  &:active {
-    box-shadow: 0px 0px 1px 0px rgb(0, 0, 0);
-  }
-`;
-
 export const TextPage = () => {
   const [text, setText] = useState([]);
   const [fileName, setFileName] = useState(null);
@@ -125,3 +81,48 @@ export const TextPage = () => {
     </>
   );
 };
+
+// * Styled components
+const TextContainer = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap");
+  font-family: "Roboto Mono", monospace;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: left;
+  padding: 2rem;
+`;
+
+const Text = styled.p`
+  font-size: 0.8rem;
+  padding: 0.2rem 2rem;
+  border-bottom: 0.1px solid black;
+  &:first-child {
+    border-top: 0.1px solid black;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+`;
+
+const Button = styled.button`
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  color: white;
+  background: rgba(28, 140, 214, 1);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 1px 1px rgb(0, 0, 0);
+  &:hover {
+    background: rgba(28, 140, 214, 0.8);
+  }
+  &:active {
+    box-shadow: 0px 0px 1px 0px rgb(0, 0, 0);
+  }
+`;

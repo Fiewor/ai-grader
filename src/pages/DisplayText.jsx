@@ -4,29 +4,6 @@ import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { Link } from "react-router-dom";
 
-const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 1rem;
-  padding: 0.3rem;
-  width: 100%;
-  @media screen and (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-  height: 100%;
-  &:first-of-type {
-    margin-top: 3rem;
-  }
-`;
-
-const P = styled.p`
-  margin-top: 2rem;
-  @media screen and (min-width: 768px) {
-    font-size: 1.5rem;
-  }
-`;
-
 export const DisplayText = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(undefined);
@@ -71,4 +48,26 @@ export const DisplayText = () => {
   );
 };
 
-// export { DisplayText, handlePrint, handleDownload };
+// * Styled components
+const List = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+  padding: 0.3rem;
+  width: 100%;
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+  height: 100%;
+  &:first-of-type {
+    margin-top: 3rem;
+  }
+`;
+
+const P = styled.p`
+  margin-top: 2rem;
+  @media screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+`;

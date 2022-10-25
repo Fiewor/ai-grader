@@ -2,6 +2,39 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+export const LandingPage = () => {
+  return (
+    <Home>
+      <div>
+        <h1>Welcome to AI-Grader!</h1>
+        <p>
+          AI-Grader is a web application that uses artificial intelligence to
+          grade{" "}
+          <span>
+            <em>handwritten</em>
+          </span>{" "}
+          answer sheets.
+        </p>
+        <DetailsSection>
+          <p>
+            AI-Grader uses Microsoft Azure Cognitive Services - Computer Vision,
+            Optical Character Recognition and Key Phrase Extraction...
+          </p>
+          <a href="https://github.com/Fiewor/ai-grader">
+            Read more on how it works
+          </a>
+        </DetailsSection>
+
+        <LinkSection>
+          <Link to="/text">Text-Extractor</Link>
+          <Link to="/grade">Grader</Link>
+        </LinkSection>
+      </div>
+    </Home>
+  );
+};
+
+// * Styled components
 const Home = styled.div`
   display: flex;
   flex-direction: column;
@@ -95,35 +128,3 @@ const LinkSection = styled.div`
     }
   }
 `;
-
-export const LandingPage = () => {
-  return (
-    <Home>
-      <div>
-        <h1>Welcome to AI-Grader!</h1>
-        <p>
-          AI-Grader is a web application that uses artificial intelligence to
-          grade{" "}
-          <span>
-            <em>handwritten</em>
-          </span>{" "}
-          answer sheets.
-        </p>
-        <DetailsSection>
-          <p>
-            AI-Grader uses Microsoft Azure Cognitive Services - Computer Vision,
-            Optical Character Recognition and Key Phrase Extraction...
-          </p>
-          <a href="https://github.com/Fiewor/ai-grader">
-            Read more on how it works
-          </a>
-        </DetailsSection>
-
-        <LinkSection>
-          <Link to="/text">Text-Extractor</Link>
-          <Link to="/grade">Grader</Link>
-        </LinkSection>
-      </div>
-    </Home>
-  );
-};
