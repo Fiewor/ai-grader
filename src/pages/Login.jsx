@@ -10,7 +10,7 @@ import {
 } from "./Register";
 import { login, reset } from "../features/auth/authSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +31,9 @@ export const Login = () => {
       // toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/");
+      //! TODO: change this navigation to rememeber the route the user intended to go to originally
+      //! and return them there after successful login
+      navigate("/grade");
     }
 
     dispatch(reset());
@@ -80,6 +82,7 @@ export const Login = () => {
               value={email}
               placeholder="Enter your email"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -91,6 +94,7 @@ export const Login = () => {
               value={password}
               placeholder="Enter your password"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -99,6 +103,9 @@ export const Login = () => {
             </Button>
           </FormGroup>
         </Form>
+        <p>
+          Don't have an account? <Link to="/register">Register</Link>
+        </p>
       </FormSection>
     </Container>
   );

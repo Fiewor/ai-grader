@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import { toast } from "react-toastify";
 import { FaUser } from "react-icons/fa";
 import { register, reset } from "../features/auth/authSlice";
@@ -27,7 +27,9 @@ export const Register = () => {
       // toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/");
+      //! TODO: change this navigation to rememeber the route the user intended to go to originally
+      //! and return them there after successful registration
+      navigate("/grade");
     }
 
     dispatch(reset());
@@ -91,6 +93,7 @@ export const Register = () => {
               value={name}
               placeholder="Enter your name"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -102,6 +105,7 @@ export const Register = () => {
               value={email}
               placeholder="Enter your email"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -113,6 +117,7 @@ export const Register = () => {
               value={password}
               placeholder="Enter your password"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -124,6 +129,7 @@ export const Register = () => {
               value={password2}
               placeholder="Confirm your password"
               onChange={onChange}
+              required
             />
           </FormGroup>
           <FormGroup>
@@ -132,11 +138,15 @@ export const Register = () => {
             </Button>
           </FormGroup>
         </Form>
+        <p>
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
       </FormSection>
     </Container>
   );
 };
 
+// * Styled components
 export const Container = styled.div`
   width: 100vw;
   height: 90vh;
