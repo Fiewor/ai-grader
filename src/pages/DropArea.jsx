@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { reset } from "../features/auth/authSlice";
 import { UploadBox, ViewButton } from "../components/index";
 import { Container, Instructions, Title, List, Group, Item } from "./TextList";
@@ -64,15 +64,15 @@ export const DropArea = () => {
           </Group>
         </List>
       </Instructions>
-
       <UploadBox section="answer" />
+      <p>Or proceed to grade existing answer sheet</p>
+      <br />
       <UploadBox section="mark" />
+      <p>Or procced to use existing marking guide</p>
       <ButtonContainer>
-        {/* <ButtonDiv> */}
-        <ViewButton children="View text" path="/texts" />
-        {/* <ViewButton children="View text" path="/viewText" /> */}
-        {/* </ButtonDiv> */}
-        <ViewButton children="View grade" path="/viewGrade" />
+        <ViewButton children="Proceed" path="/all-uploads" />
+        {/* <ViewButton children="View text" path="/texts" />
+        <ViewButton children="View grade" path="/viewGrade" /> */}
       </ButtonContainer>
     </Container>
   );

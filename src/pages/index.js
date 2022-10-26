@@ -1,4 +1,4 @@
-export { DisplayText } from "./DisplayText";
+export { DisplayContent } from "./DisplayContent";
 export { DisplayGrade } from "./DisplayGrade";
 export { LandingPage } from "./LandingPage";
 export { Login } from "./Login";
