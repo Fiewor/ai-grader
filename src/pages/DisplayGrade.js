@@ -3,14 +3,23 @@ import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
 import { UploadBox, ViewButton } from "../components";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const DisplayGrade = () => {
   const [score, setScore] = useState({ arr: [], grade: 0, totalPoints: 0 });
   const [loading, setLoading] = useState(undefined);
 
+  const navigate = useNavigate();
+
+  let query = new URLSearchParams(useLocation().search);
+  const markId = query.get("markId");
+  const answerId = query.get("answerId");
+
   useEffect(() => {
     const getGrade = async () => {
-      let result = await axios.get(`/api/viewGrade`);
+      let result = await axios.get(
+        `/api/viewGrade?markId=${markId}&answerId=${answerId}`
+      );
       console.log("received grade data", result.data);
       setScore({
         arr: result.data.arr,
@@ -51,6 +60,7 @@ export const DisplayGrade = () => {
           </ButtonContainer>
         </GradeContainer>
       )}
+      <button onClick={() => navigate("/all-uploads")}>Go back</button>
     </Container>
   );
 };
@@ -60,6 +70,7 @@ const Container = styled.div`
   width: 100vw;
   height: 90vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
