@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 import { Player } from "@lottiefiles/react-lottie-player";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ViewButton } from "../components/index";
 
 export const DisplayContent = ({ route }) => {
@@ -12,6 +12,7 @@ export const DisplayContent = ({ route }) => {
     markId: null,
     answerId: null,
   });
+  const navigate = useNavigate();
   useEffect(() => {
     const getTextData = async () => {
       // ! TO-DO: specify collection from which to retrieve texts
@@ -25,7 +26,6 @@ export const DisplayContent = ({ route }) => {
     };
     getTextData();
   }, []);
-  console.log("ids: ", ids);
 
   return (
     <>
@@ -108,7 +108,10 @@ export const DisplayContent = ({ route }) => {
                   <Link to="/grade">Upload one now</Link>
                 </p>
               )}
-              {/* <ViewButton children="Grade" path={`${viewGrade}`}/> */}
+              <ViewButton
+                children="Grade"
+                path={`/viewGrade?markId=${ids.markId}&answerId=${ids.answerId}`}
+              />
             </>
           ) : (
             <>
@@ -122,6 +125,7 @@ export const DisplayContent = ({ route }) => {
               ))}
             </>
           )}
+          <button onClick={() => navigate("/all-uploads")}>Go back</button>
         </>
       )}
     </>
