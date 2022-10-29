@@ -6,13 +6,18 @@ import { Link, useNavigate } from "react-router-dom";
 import { ViewButton } from "../components/index";
 
 export const DisplayContent = ({ route }) => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({
+    answerDoc: [],
+    markDoc: [],
+    text: [],
+  });
   const [loading, setLoading] = useState(undefined);
   const [ids, setIds] = useState({
     markId: null,
     answerId: null,
   });
   const navigate = useNavigate();
+
   useEffect(() => {
     const getTextData = async () => {
       // ! TO-DO: specify collection from which to retrieve texts
@@ -20,12 +25,41 @@ export const DisplayContent = ({ route }) => {
       if (result.status !== 200) {
         alert(`Unable to retrieve text from database`);
       } else {
-        setData(result.data);
+        const { answerDoc, markDoc } = result.data;
+        if (answerDoc && markDoc) {
+          setData((data) => ({
+            ...data,
+            answerDoc,
+            markDoc,
+          }));
+        }
+        setData((data) => ({
+          ...data,
+          text: result.data,
+        }));
         setLoading(true);
       }
     };
     getTextData();
   }, []);
+
+  const deleteItem = async (e, id) => {
+    const doc = e.target.name;
+    const deleteData = await axios.delete(`/api/all-uploads/${doc}/${id}`);
+    if (deleteData) {
+      // if data was successfully deleted from database
+      if (doc === "answerSheet") {
+        const updatedDoc = data.answerDoc.filter((el) => id !== el._id);
+        setData({
+          ...data,
+          answerDoc: updatedDoc,
+        });
+      } else {
+        const updatedDoc = data.markDoc.filter((el) => id !== el._id);
+        setData({ ...data, markDoc: updatedDoc });
+      }
+    }
+  };
 
   return (
     <>
@@ -40,8 +74,9 @@ export const DisplayContent = ({ route }) => {
         ></Player>
       ) : (
         <>
-          {data.answerDoc || data.markDoc ? (
+          {data.answerDoc.length || data.markDoc.length ? (
             <>
+              {console.log("markDoc: ", data.markDoc)}
               {data.answerDoc ? (
                 <>
                   <P>
@@ -57,8 +92,8 @@ export const DisplayContent = ({ route }) => {
                       <input
                         // type={route === "mark" ? "radio" : "checkbox"} //! use this after implementing basic checkbox select logic
                         type="checkbox"
-                        name=""
-                        id=""
+                        name="answerSheet"
+                        value={ids.answerId}
                         onChange={(e) =>
                           e.target.checked
                             ? setIds((ids) => ({ ...ids, answerId: arr._id }))
@@ -67,6 +102,12 @@ export const DisplayContent = ({ route }) => {
                       />
                       <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
                       <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
+                      <button
+                        onClick={(e) => deleteItem(e, arr._id)}
+                        name="answerSheet"
+                      >
+                        Delete
+                      </button>
                     </List>
                   ))}
                 </>
@@ -90,7 +131,8 @@ export const DisplayContent = ({ route }) => {
                     <List key={arr._id}>
                       <input
                         type="checkbox"
-                        name="checkbox"
+                        name="markSheet"
+                        value={ids.markId}
                         onChange={(e) =>
                           e.target.checked
                             ? setIds((ids) => ({ ...ids, markId: arr._id }))
@@ -99,6 +141,12 @@ export const DisplayContent = ({ route }) => {
                       />
                       <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
                       <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
+                      <button
+                        onClick={(e) => deleteItem(e, arr._id)}
+                        name="markSheet"
+                      >
+                        Delete
+                      </button>
                     </List>
                   ))}
                 </>
@@ -117,7 +165,7 @@ export const DisplayContent = ({ route }) => {
             <>
               <P>Click on a document's id or filename to view its text</P>
 
-              {data.map((arr) => (
+              {data.text.map((arr) => (
                 <List key={arr._id}>
                   <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
                   <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
