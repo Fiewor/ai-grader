@@ -88,7 +88,6 @@ export const DisplayContent = ({ route }) => {
                   </p>
                   {data.answerDoc.map((arr) => (
                     <List key={arr._id}>
-                      {/* get the id of selected list item and pass to backend to use for grading */}
                       <input
                         // type={route === "mark" ? "radio" : "checkbox"} //! use this after implementing basic checkbox select logic
                         type="checkbox"
@@ -173,7 +172,7 @@ export const DisplayContent = ({ route }) => {
               ))}
             </>
           )}
-          <button onClick={() => navigate("/all-uploads")}>Go back</button>
+          <button onClick={() => navigate("/grade")}>Go back</button>
         </>
       )}
     </>
