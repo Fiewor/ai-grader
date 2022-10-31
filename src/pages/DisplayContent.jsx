@@ -89,8 +89,7 @@ export const DisplayContent = ({ route }) => {
                   {data.answerDoc.map((arr) => (
                     <List key={arr._id}>
                       <input
-                        // type={route === "mark" ? "radio" : "checkbox"} //! use this after implementing basic checkbox select logic
-                        type="checkbox"
+                        type="radio"
                         name="answerSheet"
                         value={ids.answerId}
                         onChange={(e) =>
@@ -129,7 +128,7 @@ export const DisplayContent = ({ route }) => {
                   {data.markDoc.map((arr) => (
                     <List key={arr._id}>
                       <input
-                        type="checkbox"
+                        type="radio"
                         name="markSheet"
                         value={ids.markId}
                         onChange={(e) =>
