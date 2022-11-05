@@ -4,6 +4,69 @@ import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
 
+export const UploadBox = ({ section }) => {
+  const [files, setFiles] = useState([]);
+
+  const fileUpload = (event) => {
+    setFiles(Array.from(event.target.files));
+  };
+  console.log(files);
+
+  const sendFiles = (event) => {
+    event.preventDefault();
+
+    const formData = new FormData();
+    files.forEach((fileItem, i) => {
+      // console.log(fileItem);
+      formData.append(i, fileItem);
+    });
+
+    let noFile = false;
+
+    axios
+      .post(`/api/uploads/${section}`, formData)
+      .then((res) => {
+        noFile = res.data.noFile;
+        if (noFile) {
+          alert(`Choose at least one file before uploading`);
+          noFile = false;
+          return;
+        }
+        res.status !== 200
+          ? alert(`Unable to upload files`)
+          : alert(`${res.data}`);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  return (
+    <Form>
+      <Textarea
+        readOnly="yes"
+        name="content"
+        id=""
+        cols="20"
+        rows="3"
+        placeholder={`Upload ${section} sheets here`}
+      />
+      <Input
+        onChange={fileUpload}
+        // type="file"
+        name="file"
+        multiple
+        className="file-input"
+      />
+      <Button
+        type="submit"
+        onClick={sendFiles}
+        className="upload-icon-container"
+      >
+        <PublishIcon className="upload-icon" />
+      </Button>
+    </Form>
+  );
+};
+
 const Textarea = styled.textarea`
   width: 100%;
   height: 90%;
@@ -71,66 +134,3 @@ const Input = styled.input.attrs((props) => ({ type: "file" }))`
     }
   }
 `;
-
-export const UploadBox = ({ section }) => {
-  const [files, setFiles] = useState([]);
-
-  const fileUpload = (event) => {
-    setFiles(Array.from(event.target.files));
-  };
-  console.log(files);
-
-  const sendFiles = (event) => {
-    event.preventDefault();
-
-    const formData = new FormData();
-    files.forEach((fileItem, i) => {
-      console.log(fileItem);
-      formData.append(i, fileItem);
-    });
-
-    let noFile = false;
-
-    axios
-      .post(`/api/uploads/${section}`, formData)
-      .then((res) => {
-        noFile = res.data.noFile;
-        if (noFile) {
-          alert(`Choose at least one file before uploading`);
-          noFile = false;
-          return;
-        }
-        res.status !== 200
-          ? alert(`Unable to upload files`)
-          : alert(`${res.data}`);
-      })
-      .catch((error) => console.log(error));
-  };
-
-  return (
-    <Form>
-      <Textarea
-        readOnly="yes"
-        name="content"
-        id=""
-        cols="20"
-        rows="3"
-        placeholder={`Upload ${section} sheets here`}
-      />
-      <Input
-        onChange={fileUpload}
-        // type="file"
-        name="file"
-        multiple
-        className="file-input"
-      />
-      <Button
-        type="submit"
-        onClick={sendFiles}
-        className="upload-icon-container"
-      >
-        <PublishIcon className="upload-icon" />
-      </Button>
-    </Form>
-  );
-};
