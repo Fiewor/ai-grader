@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 export const DisplayGrade = () => {
   const [score, setScore] = useState({ arr: [], grade: 0, totalPoints: 0 });
-  const [loading, setLoading] = useState(undefined);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -17,49 +17,59 @@ export const DisplayGrade = () => {
 
   useEffect(() => {
     const getGrade = async () => {
-      let result = await axios.get(
-        `/api/viewGrade?markId=${markId}&answerId=${answerId}`
-      );
-      console.log("received grade data", result.data);
-      setScore({
-        arr: result.data.arr,
-        grade: result.data.grade,
-        totalPoints: result.data.totalPoints,
-      });
-      setLoading(true);
+      try {
+        setIsLoading(true);
+
+        let result = await axios.get(
+          `/api/viewGrade?markId=${markId}&answerId=${answerId}`
+        );
+        console.log("received grade data", result.data);
+        setScore({
+          arr: result.data.arr,
+          grade: result.data.grade,
+          totalPoints: result.data.totalPoints,
+        });
+      } catch (err) {
+        console.log(err);
+      }
+
+      setIsLoading(false);
     };
+
     getGrade();
   }, []);
 
+  if (isLoading) {
+    return (
+      <Player
+        autoplay
+        loop
+        mode="normal"
+        src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_TWO}
+        speed="1"
+        style={{ width: "70%" }}
+      ></Player>
+    );
+  }
+
   return (
     <Container>
-      {!loading ? (
-        <Player
-          autoplay
-          loop
-          mode="normal"
-          src={process.env.REACT_APP_LOAD_SCREEN_ANIMATION_TWO}
-          speed="1"
-          style={playerStyle}
-        ></Player>
-      ) : (
-        <GradeContainer>
-          <ul>
-            {score.arr.map((score) => (
-              <ListItem key={score.id}>
-                Score for question {score.id + 1}: {score.score}/
-                {score.pointsAwardable}
-              </ListItem>
-            ))}
-          </ul>
-          <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
+      <GradeContainer>
+        <ul>
+          {score.arr.map((score) => (
+            <ListItem key={score.id}>
+              Score for question {score.id + 1}: {score.score}/
+              {score.pointsAwardable}
+            </ListItem>
+          ))}
+        </ul>
+        <p>{`Total score for this answer page is ${score.grade}/${score.totalPoints}`}</p>
 
-          <ButtonContainer>
-            <ViewButton children="View breakdown" path="/details" />
-            <ViewButton children="Upload to Google Sheets" path="" />
-          </ButtonContainer>
-        </GradeContainer>
-      )}
+        <ButtonContainer>
+          <ViewButton children="View breakdown" path="/details" />
+          <ViewButton children="Upload to Google Sheets" path="" />
+        </ButtonContainer>
+      </GradeContainer>
       <button onClick={() => navigate("/all-uploads")}>Go back</button>
     </Container>
   );
