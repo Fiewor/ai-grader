@@ -1,7 +1,5 @@
 // for making HTTP request, sending the data back and setting (user)data received in localStorage
-import axios from "axios";
-
-const API_URL = "http://localhost:3001/api/users/";
+import axios from "../../axios";
 
 const headers = { "Content-Type": "multipart/form-data" };
 
@@ -11,7 +9,7 @@ const register = async (userData) => {
   for (const key in userData) {
     form.append(key, userData[key]);
   }
-  const response = await axios.post(API_URL, form, headers);
+  const response = await axios.post(`/api/users/`, form, headers);
 
   if (response.data) {
     console.log("response: ", response.data);
@@ -23,12 +21,11 @@ const register = async (userData) => {
 
 // Login user
 const login = async (userData) => {
-  // const response = await axios.post(API_URL + `login`, userData);
   const form = new FormData();
   for (const key in userData) {
     form.append(key, userData[key]);
   }
-  const response = await axios.post(API_URL + `login`, form, headers);
+  const response = await axios.post(`/api/users/login`, form, headers);
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));

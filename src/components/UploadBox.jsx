@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PublishIcon from "@material-ui/icons/Publish";
 import Button from "@material-ui/core/Button";
-import axios from "axios";
+import axios from "../axios";
 
 export const UploadBox = ({ section }) => {
   const [files, setFiles] = useState([]);
