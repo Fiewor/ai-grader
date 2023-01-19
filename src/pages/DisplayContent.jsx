@@ -34,11 +34,12 @@ export const DisplayContent = ({ route }) => {
               answerDoc,
               markDoc,
             }));
+          } else {
+            setData((data) => ({
+              ...data,
+              text: result.data,
+            }));
           }
-          setData((data) => ({
-            ...data,
-            text: result.data,
-          }));
         }
       } catch (err) {
         console.log(err);
