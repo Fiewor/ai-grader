@@ -8,15 +8,11 @@
   "private": true,
   "dependencies": {
     "@carbon/react": "1.1.0",
-    "@lottiefiles/react-lottie-player": "^3.4.2",
-    "@material-ui/core": "^4.12.3",
-    "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.8.3",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
-    "js-html2pdf": "^1.1.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.4.0",
@@ -25,7 +21,6 @@
     "react-scripts": "4.0.3",
     "react-to-print": "^2.14.7",
     "sass": "1.51.0",
-    "styled-components": "^5.3.5",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -35,7 +30,6 @@
     "eject": "react-scripts eject",
     "heroku-postbuild": "yarn run build"
   },
-  "proxy": "http://localhost:3001",
   "eslintConfig": {
     "extends": [
       "react-app",

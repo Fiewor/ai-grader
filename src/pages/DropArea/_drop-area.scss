@@ -1,0 +1,26 @@
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/type" as *;
+
+.header {
+  margin-top: $spacing-05;
+  margin-bottom: $spacing-08;
+  h1 {
+    margin-bottom: $spacing-03;
+  }
+}
+
+.sub-heading {
+  @include type-style("helper-text-02");
+  margin-top: $spacing-02;
+  margin-bottom: $spacing-02;
+}
+
+.upload-section {
+  margin-top: $spacing-03;
+  margin-bottom: $spacing-04;
+}
+
+.button {
+  margin-top: $spacing-03;
+  margin-bottom: $spacing-03;
+}

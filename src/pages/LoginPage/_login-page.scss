@@ -1,0 +1,12 @@
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/colors" as *;
+
+.login-page__form {
+  //   width: 50vw;
+  //   margin: 0 auto;
+  margin-top: $spacing-10;
+}
+
+.login-page__right {
+  background: $blue-10;
+}

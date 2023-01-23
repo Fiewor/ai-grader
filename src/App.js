@@ -1,51 +1,34 @@
 import React from "react";
-import { Header, Footer } from "./components";
+import { Content, Theme } from "@carbon/react";
+import { Routes, Route } from "react-router";
+import "./app.scss";
+import MainHeader from "./components/MainHeader";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
+import DropArea from "./pages/DropArea";
+import DisplayContent from "./pages/DisplayContent";
 
-import {
-  DisplayText,
-  DisplayGrade,
-  LandingPage,
-  TextList,
-  TextPage,
-  Login,
-  Register,
-  DropArea
-} from "./pages";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-import "./App.css";
-
-function App() {
+const App = () => {
   return (
     <>
-      <Router>
-        <div className="App">
-          <Header />
-          <Routes>
-            <Route path="/" exact element={<LandingPage />} />
-            <Route path="grade" element={<DropArea />} />
-            <Route path="text" element={<TextList />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="texts" element={<DisplayText />} />
-            <Route path="viewGrade" element={<DisplayGrade />} />
-            <Route path="texts/:id" element={<TextPage />} />
-            <Route
-              path="*"
-              element={
-                <main style={{ padding: "1rem" }}>
-                  <p>Ooops. There's nothing here!</p>
-                </main>
-              }
-            />
-          </Routes>
-          {/* <Footer /> */}
-        </div>
-      </Router>
-      {/* <ToastContainer /> */}
+      <Theme theme="g90">
+        <MainHeader />
+      </Theme>
+      <Content>
+        <Routes>
+          <Route path="/" exact element={<LandingPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/droparea" element={<DropArea />} />
+          <Route
+            path="/uploads"
+            element={<DisplayContent route="all-uploads" />}
+          />
+        </Routes>
+      </Content>
     </>
   );
-}
+};
 
 export default App;
