@@ -1,8 +1,83 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Column, Button } from "@carbon/react";
+import {
+  Grid,
+  Column,
+  Button,
+  RadioButtonGroup,
+  RadioButton,
+  Checkbox,
+  InlineNotification,
+  UnorderedList,
+  ListItem,
+} from "@carbon/react";
 import ProgressBar from "@carbon/react/lib/components/ProgressBar/ProgressBar";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
+
+const List = ({ doc, sheet }) => {
+  console.log("doc in List: ", doc);
+
+  const [ids, setIds] = useState({
+    markId: null,
+    answerId: null,
+  });
+
+  return (
+    <UnorderedList className="list">
+      {doc.map(({ _id, page: { fileName } }) => (
+        <ListItem
+          key={_id}
+          className="list-item"
+          style={{ listStyleType: "none" }}
+        >
+          <Checkbox
+            name={sheet}
+            value={sheet === "markSheet" ? ids.markId : ids.answerId}
+            id=""
+            labelText={<Link to={`/texts/${_id}`}>{fileName}</Link>}
+            onChange={(e) =>
+              e.target.checked
+                ? setIds((ids) => ({ ...ids, markId: _id }))
+                : setIds((ids) => ({ ...ids, markId: null }))
+            }
+          />
+        </ListItem>
+      ))}
+    </UnorderedList>
+  );
+};
+
+const ListComponent = ({ doc, sheet }) => {
+  console.log("doc in ListComponent: ", doc);
+  if (doc.length) {
+    return (
+      <Column lg={16} md={8} sm={4} className="">
+        <Grid>
+          <Column lg={16} md={8} sm={4} className="header">
+            <p className="heading">
+              Select the {doc} documents that you would like to grade
+            </p>
+            <p className="sub_heading">
+              You can click on a document's id or filename to view its text
+            </p>
+          </Column>
+          <Column lg={16} md={8} sm={4} className="">
+            <List doc={doc} sheet={sheet} />
+          </Column>
+        </Grid>
+      </Column>
+    );
+  } else {
+    return (
+      <Column lg={16} md={8} sm={4} className="">
+        <p>
+          No {doc} sheet has been uploaded.
+          <Link to="/grade">Upload one now</Link>
+        </p>
+      </Column>
+    );
+  }
+};
 
 const DisplayContent = ({ route }) => {
   // const [progress, setProgress] = useState(0);
@@ -27,6 +102,7 @@ const DisplayContent = ({ route }) => {
         alert(`Unable to retrieve text from database`);
       } else {
         const { answerDoc, markDoc } = result.data;
+
         if (answerDoc && markDoc) {
           setData((data) => ({
             ...data,
@@ -47,59 +123,64 @@ const DisplayContent = ({ route }) => {
       }
     };
     getTextData();
+    console.log("data: ", data);
   }, []);
 
-  const helperText = loading ? "Fetching documents" : "Done";
   if (loading) {
     return (
-      <Grid className="login-page">
-        <Column lg={7} md={4} sm={2} className="login-page__left">
+      <Grid className="">
+        <Column lg={7} md={4} sm={2} className="">
           <ProgressBar
-            // value={loading ? progress : null}
             status={status}
             label="Fetching uploaded documents"
-            helperText={helperText}
+            helperText={loading ? "Fetching documents" : "Done"}
           />
         </Column>
       </Grid>
     );
-  }
-  console.log("loading: ", loading);
-  console.log("success: ", success);
-  if (success) {
-    return inGrader ? (
-      data.answerDoc ? (
-        <Grid>
-          <Column lg={16} md={8} sm={4} className="">
-            <p>Select the answer documents that you would like to grade</p>
-          </Column>
-          <Column lg={16} md={8} sm={4} className="">
-            <p>You can click on a document's id or filename to view its text</p>
-          </Column>
-        </Grid>
-      ) : (
-        <Column lg={16} md={8} sm={4} className="">
-          <p>
-            No answer sheet has been uploaded.
-            <Link to="/grade">Upload one now</Link>
-          </p>
-        </Column>
-      )
-    ) : (
-      <Grid fullWidth>
-        <Column lg={16} md={8} sm={4} className="">
-          <p>Click on a document's id or filename to view its text</p>
-        </Column>
-        <Column lg={16} md={8} sm={4} className="">
-          {data.text.map((arr) => (
-            <ul key={arr._id}>
-              <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
-              <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
-            </ul>
-          ))}
-        </Column>
-      </Grid>
-    );
+  } else {
+    if (success) {
+      if (inGrader) {
+        const { answerDoc, markDoc } = data;
+        return (
+          <Grid fullWidth>
+            <ListComponent doc={answerDoc} sheet="answerSheet" />
+            <ListComponent doc={markDoc} sheet="markSheet" />
+          </Grid>
+        );
+      } else if (inTextExtractor) {
+        return (
+          <Grid fullWidth>
+            <p>Click on a document's id or filename to view its text</p>
+
+            {data.text.map((arr) => (
+              <List key={arr._id}>
+                <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
+                <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
+              </List>
+            ))}
+          </Grid>
+        );
+      } else {
+        return (
+          <InlineNotification
+            role="alert"
+            kind="error"
+            timeout={5}
+            title="Neither in text extractor nor in grader. How did you get here?"
+          />
+        );
+      }
+    } else {
+      return (
+        <InlineNotification
+          role="alert"
+          kind="error"
+          timeout={5}
+          title="Unable to retrieve content."
+        />
+      );
+    }
   }
 };
 

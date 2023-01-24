@@ -9,7 +9,8 @@ const LoginPage = () => {
         <Form className="login-page__form">
           <Stack gap={7}>
             <TextInput labelText="Name" />
-            <TextInput
+            <TextInput labelText="Email" type="email" />
+            <TextInput.PasswordInput
               labelText="Password"
               type="password"
               required

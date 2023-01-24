@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Column, Stack, Button } from "@carbon/react";
+import { Grid, Column, Button } from "@carbon/react";
 import {
   ArrowUpRight,
   LogoGithub,
@@ -34,8 +34,8 @@ const LandingPage = () => {
           </Column>
         </Grid>
       </Column>
-      <Column lg={16} md={8} sm={4} className="landing-page__footer">
-        <Grid>
+      <Column lg={16} md={8} sm={4}>
+        <Grid className="landing-page__footer">
           <Column lg={4} md={4} sm={2} className="landing-page__footer__link">
             <p>&copy; John Fiewor {new Date().getFullYear()}</p>
           </Column>

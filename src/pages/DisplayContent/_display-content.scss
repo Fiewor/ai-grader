@@ -1,0 +1,30 @@
+@use "@carbon/react/scss/type" as *;
+@use "@carbon/react/scss/spacing" as *;
+@use "./overrides.scss";
+
+.header {
+  padding-bottom: $spacing-04;
+}
+
+.heading {
+  //   @include type-style("fluid-heading-04");
+}
+
+.sub-heading {
+  //   @include type-style("fluid-heading-03");
+}
+
+.list-container {
+  padding-top: $spacing-03;
+  padding-bottom: $spacing-03;
+  & * {
+    margin-left: 0;
+  }
+}
+
+.list {
+  list-style: none;
+}
+
+.list-item {
+}

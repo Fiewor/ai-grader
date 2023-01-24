@@ -4,8 +4,8 @@
 @use "@carbon/react/scss/theme" as *;
 @use "./mixins.scss" as *;
 @use "./overrides.scss";
+
 .landing-page {
-  // grid-template-rows: 1fr auto minmax(10px, max-content);
   height: 100%;
   align-content: space-between;
 }
@@ -34,16 +34,18 @@
 }
 
 .landing-page__footer {
-  padding-top: $spacing-04;
+  padding-top: $spacing-06;
+  padding-bottom: $spacing-03;
   grid-row-start: third-line last-line;
 }
 
 .landing-page__footer__link {
+  padding-top: $spacing-06;
   &:not(:first-child) {
     text-align: center;
   }
   @include breakpoint-down(md) {
     text-align: center;
+    padding-top: $spacing-02;
   }
-  padding-top: $spacing-06;
 }
