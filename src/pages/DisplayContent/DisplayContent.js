@@ -10,10 +10,12 @@ import { useQuery } from "react-query";
 import ProgressBar from "@carbon/react/lib/components/ProgressBar/ProgressBar";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
+import { useNavigate } from "react-router-dom";
 import ListAndHeader from "../../components/ListAndHeader";
 import List from "../../components/List";
 
 const DisplayContent = ({ route }) => {
+  const navigate = useNavigate();
   const { status, isLoading, error, isError, isSuccess, data, refetch } =
     useQuery("content", async () => await axios.get(`api/${route}`), {
       retry: 3,
@@ -50,7 +52,7 @@ const DisplayContent = ({ route }) => {
               <ListAndHeader doc={answerDoc} sheet="answerSheet" />
               <ListAndHeader doc={markDoc} sheet="markSheet" />
               <Column lg={16} md={8} sm={4} className="list-container">
-                <Button>Grade</Button>
+                {/* <Button onClick={navigate(`/viewGrade?markId=${ids.markId}&answerId=${ids.answerId}`)}>Grade</Button> */}
               </Column>
             </Grid>
           );
@@ -69,21 +71,26 @@ const DisplayContent = ({ route }) => {
         }
       } else {
         return (
-          <InlineNotification
+          <ActionableNotification
             role="alert"
             kind="error"
             timeout={5}
+            closeOnEscape
+            inline={false}
             title="Fetch was successful but there's no data."
           />
         );
       }
     } else {
       return (
-        <InlineNotification
-          role="alert"
+        <ActionableNotification
           kind="error"
           timeout={5}
           title="No data was returned"
+          closeOnEscape
+          inline={false}
+          actionButtonLabel="Retry"
+          onActionButtonClick={() => refetch()}
         />
       );
     }
