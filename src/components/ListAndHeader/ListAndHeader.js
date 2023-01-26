@@ -4,17 +4,18 @@ import { Grid, Column } from "@carbon/react";
 import List from "../List";
 
 const ListAndHeader = ({ doc, sheet }) => {
+  const headingText = `Select the ${sheet} that you would like to ${
+    sheet === "answerSheet" ? "grade" : "use for grading"
+  }`;
   if (doc.length) {
     return (
-      <Column lg={16} md={8} sm={4} className="">
+      <Column lg={16} md={8} sm={4} className="list-container">
         <Grid>
-          <Column lg={16} md={8} sm={4} className="header">
-            <p className="heading">
-              Select the {sheet} that you would like to grade
-            </p>
-            <p className="sub_heading">
+          <Column lg={16} md={8} sm={4} className="list-header">
+            <p className="list-heading">{headingText}</p>
+            {/* <p className="sub_heading">
               You can click on a document's id or filename to view its text
-            </p>
+            </p> */}
           </Column>
           <Column lg={16} md={8} sm={4} className="">
             <List doc={doc} sheet={sheet} />
