@@ -1,9 +1,13 @@
 @use "@carbon/react/scss/spacing" as *;
 @use "@carbon/react/scss/type" as *;
 
-.header {
-  //   padding-top: $spacing-02;
-  //   padding-bottom: $spacing-02;
+.list-container {
+  margin-bottom: $spacing-05;
+}
+
+.list-header {
+  padding-top: $spacing-04;
+  padding-bottom: $spacing-04;
 }
 
 .heading {
