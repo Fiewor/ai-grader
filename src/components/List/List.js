@@ -6,9 +6,8 @@ const List = ({ doc, sheet }) => {
   const [ids, setIds] = useState({
     markIds: [],
     answerIds: [],
+    isChecked: false,
   });
-
-  console.log("ids: ", ids);
 
   return (
     <UnorderedList className="list">
@@ -24,14 +23,19 @@ const List = ({ doc, sheet }) => {
               name={idKey}
               id={_id}
               labelText={fileName}
-              onChange={(event, { checked, id }) =>
+              onChange={(_, { checked, id }) => {
+                setIds({
+                  ...ids,
+                  isChecked: checked,
+                });
+
                 setIds((ids) => ({
                   ...ids,
-                  [idKey]: checked
+                  [idKey]: ids.isChecked
                     ? [...ids[idKey], id]
-                    : [idKey].filter((ind) => ind !== id),
-                }))
-              }
+                    : ids[idKey].filter((val) => val !== id),
+                }));
+              }}
             />
 
             {/* add link so user can view */}
