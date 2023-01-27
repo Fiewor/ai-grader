@@ -4,7 +4,7 @@ import { Grid, Column, Form, Stack, TextInput, Button } from "@carbon/react";
 const RegisterPage = () => {
   return (
     <Grid className="register-page" fullWidth>
-      <Column lg={7} md={4} sm={2} className="register-page__left">
+      <Column lg={7} md={8} sm={4} className="register-page__left">
         <Form className="register-page__form">
           <Stack gap={7}>
             <TextInput labelText="Name" />
@@ -22,7 +22,7 @@ const RegisterPage = () => {
           </Stack>
         </Form>
       </Column>
-      <Column lg={7} md={4} sm={2} className="register-page__right"></Column>
+      <Column lg={9} md={0} sm={0} className="register-page__right"></Column>
     </Grid>
   );
 };
