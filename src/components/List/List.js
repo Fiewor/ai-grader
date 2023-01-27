@@ -1,19 +1,19 @@
 import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 import { Checkbox, UnorderedList, ListItem } from "@carbon/react";
-import { IdContext, IdDispatchContext } from "../../IdContext";
+import { IdDispatchContext } from "../../IdContext";
 
 const List = ({ doc, sheet }) => {
-  const ids = useContext(IdContext);
   const dispatch = useContext(IdDispatchContext);
-  function handleChecked(checked) {
+
+  function handleCheckBoxState(checked) {
     dispatch({
       type: "checked",
       checked,
     });
   }
 
-  function toggle_store(key, id) {
+  function toggleCheck(key, id) {
     dispatch({
       type: "toggle_store",
       key,
@@ -25,6 +25,7 @@ const List = ({ doc, sheet }) => {
     <UnorderedList className="list">
       {doc?.map(({ _id, page: { fileName } }, i) => {
         const idKey = sheet === "markSheet" ? "markIds" : "answerIds";
+
         return (
           <ListItem key={_id} className="list-item">
             <Checkbox
@@ -32,8 +33,8 @@ const List = ({ doc, sheet }) => {
               id={_id}
               labelText={fileName}
               onChange={(_, { checked, id }) => {
-                handleChecked(checked);
-                toggle_store(checked, id);
+                handleCheckBoxState(checked);
+                toggleCheck(idKey, id);
               }}
             />
 
