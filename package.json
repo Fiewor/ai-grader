@@ -12,6 +12,10 @@
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "@types/jest": "^29.4.0",
+    "@types/node": "^18.11.18",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "axios": "^0.21.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -22,6 +26,7 @@
     "react-scripts": "4.0.3",
     "react-to-print": "^2.14.7",
     "sass": "1.51.0",
+    "typescript": "^4.9.4",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
