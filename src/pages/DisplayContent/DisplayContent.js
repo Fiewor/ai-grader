@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
-import {
-  Grid,
-  Column,
-  InlineNotification,
-  ActionableNotification,
-  Button,
-} from "@carbon/react";
+import React, { useContext } from "react";
+import { Grid, Column, ActionableNotification, Button } from "@carbon/react";
 import { useQuery } from "react-query";
 import ProgressBar from "@carbon/react/lib/components/ProgressBar/ProgressBar";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 import { useNavigate } from "react-router-dom";
+import { IdProvider, IdContext } from "../../IdContext";
 import ListAndHeader from "../../components/ListAndHeader";
 import List from "../../components/List";
 
 const DisplayContent = ({ route }) => {
   const navigate = useNavigate();
+  const ids = useContext(IdContext);
   const { status, isLoading, error, isError, isSuccess, data, refetch } =
     useQuery("content", async () => await axios.get(`api/${route}`), {
       retry: 3,
@@ -47,12 +43,22 @@ const DisplayContent = ({ route }) => {
         } = data;
 
         if (answerDoc.length && markDoc.length) {
+          const { answerIds, markIds } = ids;
+          const answerUrl = answerIds?.join() || "";
+          const markUrl = markIds?.join() || "";
+
           return (
             <Grid fullWidth>
               <ListAndHeader doc={answerDoc} sheet="answerSheet" />
               <ListAndHeader doc={markDoc} sheet="markSheet" />
               <Column lg={16} md={8} sm={4} className="list-container">
-                {/* <Button onClick={navigate(`/viewGrade?markId=${ids.markId}&answerId=${ids.answerId}`)}>Grade</Button> */}
+                <Button
+                  onClick={navigate(
+                    `/viewGrade?markId=${markUrl}&answerId=${answerUrl}`
+                  )}
+                >
+                  Grade
+                </Button>
               </Column>
             </Grid>
           );

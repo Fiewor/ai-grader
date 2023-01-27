@@ -12,7 +12,6 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import App from "./App";
 import "./index.scss";
-import { IdProvider } from "./IdContext";
 
 const queryClient = new QueryClient();
 
@@ -20,9 +19,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <QueryClientProvider client={queryClient}>
-        <IdProvider>
-          <App />
-        </IdProvider>
+        <App />
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </Router>
