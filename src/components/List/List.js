@@ -8,14 +8,14 @@ const List = ({ doc, sheet }) => {
 
   function handleCheckBoxState(checked) {
     dispatch({
-      type: "checked",
+      type: "CHECKED",
       checked,
     });
   }
 
   function toggleCheck(key, id) {
     dispatch({
-      type: "toggle_store",
+      type: "TOGGLE_STORE",
       key,
       id,
     });
