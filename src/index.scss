@@ -1,4 +1,6 @@
 @use "@carbon/react";
+@use "@carbon/react/scss/breakpoint" as *;
+@use "@carbon/react/scss/spacing" as *;
 
 .cds--content {
   margin-top: 3rem;
@@ -6,4 +8,7 @@
   padding-right: 0;
   padding-bottom: 0;
   height: 90vh;
+  @include breakpoint-down(md) {
+    padding-top: $spacing-04;
+  }
 }
