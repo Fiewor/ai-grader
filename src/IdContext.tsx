@@ -1,10 +1,30 @@
-import React, { createContext, useReducer, FC, Dispatch } from "react";
+import React, { createContext, useReducer, Dispatch, FC } from "react";
 
-export const IdContext = createContext<IdContextType>(null);
-export const IdDispatchContext = createContext<IdDispatchContextType>(null);
+// types
+interface IdState {
+  markIds: string[];
+  answerIds: string[];
+  isChecked: any;
+}
 
-type IdContextType = Id | null;
-type IdDispatchContextType = Dispatch<IAction> | null;
+interface Props {
+  children: React.ReactNode;
+}
+
+interface IAction {
+  type: string;
+  key: string;
+  id: string | number;
+}
+
+const initialIds: IdState = {
+  markIds: [],
+  answerIds: [],
+  isChecked: false,
+};
+
+export const IdContext = createContext<IdState | null>(null);
+export const IdDispatchContext = createContext<Dispatch<IAction>>(() => {});
 
 export const IdProvider: FC<Props> = ({ children }) => {
   const [ids, dispatch] = useReducer(idReducer, initialIds);
@@ -18,24 +38,32 @@ export const IdProvider: FC<Props> = ({ children }) => {
   );
 };
 
-function idReducer(ids: Id, action: IAction) {
+// interface Ireducer {
+//   (state: IdState, action: IAction) => IdState
+// }
+
+function idReducer(ids: IdState, action: IAction) {
   switch (action.type) {
-    case "checked": {
+    case "CHECKED": {
       return {
         ...ids,
         isChecked: !ids.isChecked,
-        // checked: action.checked,
       };
     }
 
-    case "toggle_store": {
-      if (action.key === "markIds" || action.key === "answerIds") {
+    case "TOGGLE_STORE": {
+      if (typeof action.key === "string") {
+        assertValidKey(action.key);
         return {
           ...ids,
           [action.key]: ids.isChecked
             ? [...ids[action.key], action.id]
-            : ids[action.key].filter((val) => val !== action.id),
+            : ids[action.key].filter((val: string) => val !== action.id),
         };
+      } else {
+        throw new Error(
+          "The 'key' property of the action must be of type 'string'"
+        );
       }
     }
 
@@ -45,24 +73,8 @@ function idReducer(ids: Id, action: IAction) {
   }
 }
 
-const initialIds = {
-  markIds: [],
-  answerIds: [],
-  isChecked: false,
-};
-
-interface Id {
-  markIds: string[];
-  answerIds: string[];
-  isChecked: boolean;
-}
-
-interface Props {
-  children: React.ReactNode;
-}
-
-interface IAction {
-  type: string;
-  key?: string;
-  id?: string | number;
+function assertValidKey(key: string): asserts key is keyof IdState {
+  if (!(key in initialIds)) {
+    throw new Error(`[${key}] is not a valid key of IdState`);
+  }
 }
