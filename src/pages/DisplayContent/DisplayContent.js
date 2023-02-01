@@ -17,10 +17,30 @@ const DisplayContent = ({ route }) => {
       retry: 3,
     });
 
+  if (isError) {
+    return (
+      <Grid fullWidth className="">
+        <Column lg={8} md={4} sm={2} className="error">
+          <ActionableNotification
+            title="Error"
+            subtitle={error.message}
+            closeOnEscape
+            inline={false}
+            kind="error"
+            timeout={5}
+            actionButtonLabel="Retry"
+            onActionButtonClick={() => refetch()}
+            className="error"
+          />
+        </Column>
+      </Grid>
+    );
+  }
+
   if (isLoading) {
     return (
       <Grid fullWidth className="">
-        <Column lg={7} md={4} sm={2} className="">
+        <Column lg={8} md={8} sm={4} className="loading">
           <ProgressBar
             status={
               status === "loading"
@@ -35,7 +55,9 @@ const DisplayContent = ({ route }) => {
         </Column>
       </Grid>
     );
-  } else if (isSuccess) {
+  }
+
+  if (isSuccess) {
     if (data) {
       if (data.status === 200) {
         const {
@@ -100,19 +122,6 @@ const DisplayContent = ({ route }) => {
         />
       );
     }
-  } else if (isError) {
-    return (
-      <ActionableNotification
-        title="Error"
-        subtitle={error.message}
-        closeOnEscape
-        inline={false}
-        kind="error"
-        timeout={5}
-        actionButtonLabel="Retry"
-        onActionButtonClick={() => refetch()}
-      />
-    );
   }
 };
 
