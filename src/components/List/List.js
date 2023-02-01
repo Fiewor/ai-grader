@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
-import { Checkbox, UnorderedList, ListItem } from "@carbon/react";
+import { Checkbox, UnorderedList, ListItem, RadioButton } from "@carbon/react";
 import { IdDispatchContext } from "../../IdContext";
 
 const List = ({ doc, sheet }) => {
@@ -28,15 +28,28 @@ const List = ({ doc, sheet }) => {
 
         return (
           <ListItem key={_id} className="list-item">
-            <Checkbox
-              name={idKey}
-              id={_id}
-              labelText={fileName}
-              onChange={(_, { checked, id }) => {
-                handleCheckBoxState(checked);
-                toggleCheck(idKey, id);
-              }}
-            />
+            {sheet === "markSheet" ? (
+              <RadioButton
+                name={idKey}
+                id={_id}
+                labelText={fileName}
+                className="radio"
+                onChange={(_, { checked, id }) => {
+                  handleCheckBoxState(checked);
+                  toggleCheck(idKey, id);
+                }}
+              />
+            ) : (
+              <Checkbox
+                name={idKey}
+                id={_id}
+                labelText={fileName}
+                onChange={(_, { checked, id }) => {
+                  handleCheckBoxState(checked);
+                  toggleCheck(idKey, id);
+                }}
+              />
+            )}
 
             {/* add link so user can view */}
             {/* <Link to={`/texts/${_id}`}>{fileName}</Link> */}
