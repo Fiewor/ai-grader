@@ -8,6 +8,7 @@ import MainHeader from "./components/MainHeader";
 import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
+import ErrorPage from "./pages/ErrorPage";
 import DropArea from "./pages/DropArea";
 import DisplayContent from "./pages/DisplayContent";
 
@@ -30,6 +31,7 @@ const App = () => {
               path="/uploads"
               element={<DisplayContent route="all-uploads" />}
             />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </IdProvider>
       </Content>
