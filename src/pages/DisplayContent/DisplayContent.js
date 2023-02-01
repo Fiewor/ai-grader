@@ -75,9 +75,11 @@ const DisplayContent = ({ route }) => {
               <ListAndHeader doc={markDoc} sheet="markSheet" />
               <Column lg={16} md={8} sm={4} className="list-container">
                 <Button
-                  onClick={navigate(
-                    `/viewGrade?markId=${markUrl}&answerId=${answerUrl}`
-                  )}
+                  onClick={() =>
+                    navigate(
+                      `/viewGrade?markId=${markUrl}&answerId=${answerUrl}`
+                    )
+                  }
                 >
                   Grade
                 </Button>
