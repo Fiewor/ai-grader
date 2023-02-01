@@ -1,10 +1,9 @@
 import React, { createContext, useReducer, Dispatch, FC } from "react";
 
-// types
 interface IdState {
   markIds: string[];
   answerIds: string[];
-  isChecked: any;
+  isChecked: boolean;
 }
 
 interface Props {
@@ -52,17 +51,17 @@ function idReducer(ids: IdState, action: IAction) {
     }
 
     case "TOGGLE_STORE": {
-      if (typeof action.key === "string") {
-        assertValidKey(action.key);
+      if (action.key === "markIds" || action.key === "answerIds") {
+        const key = action.key as "markIds" | "answerIds";
         return {
           ...ids,
-          [action.key]: ids.isChecked
-            ? [...ids[action.key], action.id]
-            : ids[action.key].filter((val: string) => val !== action.id),
+          [key]: ids.isChecked
+            ? [...ids[key], action.id]
+            : ids[key].filter((val) => val !== action.id),
         };
       } else {
         throw new Error(
-          "The 'key' property of the action must be of type 'string'"
+          "The 'key' property of the action must be either 'markIds' or 'answerIds'"
         );
       }
     }
@@ -70,11 +69,5 @@ function idReducer(ids: IdState, action: IAction) {
     default: {
       throw Error("Unknown action: " + action.type);
     }
-  }
-}
-
-function assertValidKey(key: string): asserts key is keyof IdState {
-  if (!(key in initialIds)) {
-    throw new Error(`[${key}] is not a valid key of IdState`);
   }
 }
