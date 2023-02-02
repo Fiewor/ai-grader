@@ -36,7 +36,7 @@ const List = ({ doc, sheet }) => {
                 className="radio"
                 onChange={(_, { checked, id }) => {
                   handleCheckBoxState(checked);
-                  toggleCheck(idKey, id);
+                  toggleCheck(idKey, _id);
                 }}
               />
             ) : (
@@ -46,7 +46,6 @@ const List = ({ doc, sheet }) => {
                 labelText={fileName}
                 onChange={(_, { checked, id }) => {
                   handleCheckBoxState(checked);
-                  toggleCheck(idKey, id);
                 }}
               />
             )}
