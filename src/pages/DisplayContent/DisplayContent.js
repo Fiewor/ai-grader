@@ -5,9 +5,9 @@ import ProgressBar from "@carbon/react/lib/components/ProgressBar/ProgressBar";
 import { Link } from "react-router-dom";
 import axios from "../../axios";
 import { useNavigate } from "react-router-dom";
-import { IdProvider, IdContext } from "../../IdContext";
 import ListAndHeader from "../../components/ListAndHeader";
 import List from "../../components/List";
+import { IdContext } from "../../IdContext";
 
 const DisplayContent = ({ route }) => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const DisplayContent = ({ route }) => {
   const { status, isLoading, error, isError, isSuccess, data, refetch } =
     useQuery("content", async () => await axios.get(`api/${route}`), {
       retry: 3,
+      refetchOnWindowFocus: true,
     });
 
   if (isError) {
@@ -65,21 +66,14 @@ const DisplayContent = ({ route }) => {
         } = data;
 
         if (answerDoc.length && markDoc.length) {
-          const { answerIds, markIds } = ids;
-          const answerUrl = answerIds?.join() || "";
-          const markUrl = markIds?.join() || "";
-
           return (
             <Grid fullWidth>
               <ListAndHeader doc={answerDoc} sheet="answerSheet" />
               <ListAndHeader doc={markDoc} sheet="markSheet" />
               <Column lg={16} md={8} sm={4} className="list-container">
                 <Button
-                  onClick={() =>
-                    navigate(
-                      `/viewGrade?markId=${markUrl}&answerId=${answerUrl}`
-                    )
-                  }
+                  disabled={!ids.selectedAnswerSheet || !ids.selectedMarkSheet}
+                  onClick={() => navigate("/grade")}
                 >
                   Grade
                 </Button>
