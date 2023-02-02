@@ -21,6 +21,13 @@ const List = ({ doc, sheet }) => {
     });
   }
 
+  function setCheckedSheet(key) {
+    dispatch({
+      type: "SET_CHECKED_SHEET",
+      key,
+    });
+  }
+
   return (
     <UnorderedList className="list">
       {doc?.map(({ _id, page: { fileName } }, i) => {
@@ -29,23 +36,26 @@ const List = ({ doc, sheet }) => {
         return (
           <ListItem key={_id} className="list-item">
             {sheet === "markSheet" ? (
-              <RadioButton
+              <Checkbox
                 name={idKey}
                 id={_id}
+                value={fileName}
                 labelText={fileName}
-                className="radio"
+                // className="radio"
                 onChange={(_, { checked, id }) => {
-                  handleCheckBoxState(checked);
                   toggleCheck(idKey, _id);
+                  setCheckedSheet(idKey);
                 }}
               />
             ) : (
               <Checkbox
                 name={idKey}
                 id={_id}
+                value={fileName}
                 labelText={fileName}
                 onChange={(_, { checked, id }) => {
-                  handleCheckBoxState(checked);
+                  toggleCheck(idKey, _id);
+                  setCheckedSheet(idKey);
                 }}
               />
             )}
