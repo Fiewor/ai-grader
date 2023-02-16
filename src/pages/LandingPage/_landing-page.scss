@@ -18,6 +18,9 @@
   @include type-style("heading-03");
   margin-top: $spacing-02;
   margin-bottom: $spacing-02;
+  @include breakpoint-down(md) {
+    padding-top: $spacing-04;
+  }
 }
 
 .landing-page__middle {
