@@ -11,10 +11,10 @@ import RegisterPage from "./pages/RegisterPage";
 import ErrorPage from "./pages/ErrorPage";
 import DropArea from "./pages/DropArea";
 import DisplayContent from "./pages/DisplayContent";
+import Grades from "./pages/Grades";
 
 const App = () => {
   const ids = useContext(IdContext);
-  console.log("id state: ", ids);
   return (
     <>
       <Theme theme="g90">
@@ -27,6 +27,8 @@ const App = () => {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/droparea" element={<DropArea />} />
+            <Route path="/grade" element={<Grades />} />
+
             <Route
               path="/uploads"
               element={<DisplayContent route="all-uploads" />}
