@@ -71,7 +71,7 @@ const RenderButtonOrNotification = ({ files, section }) => {
       formData.append(i, fileItem);
     });
     try {
-      const response = await axios.post(`/api/uploads/${section}`, formData);
+      const response = await axios.post(`api/uploads/${section}`, formData);
       setUploading(true);
 
       console.log("response: ", response);
