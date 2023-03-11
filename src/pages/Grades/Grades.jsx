@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-// import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Grid, Column, ActionableNotification, Button } from "@carbon/react";
 import ProgressBar from "@carbon/react/lib/components/ProgressBar/ProgressBar";
@@ -9,6 +9,7 @@ import { IdContext } from "../../IdContext";
 import axios from "../../axios";
 
 const Grades = () => {
+  const nav = useNavigate();
   const ids = useContext(IdContext);
   // console.log("id state: ", ids);
 
@@ -37,7 +38,7 @@ const Grades = () => {
   } = useQuery(
     "score",
     async () =>
-      await axios.get(`api/viewGrade?markId=${markUrl}&answerId=${answerUrl}`),
+      await axios.get(`api/grades?markId=${markUrl}&answerId=${answerUrl}`),
     {
       retry: 3,
     }
@@ -95,15 +96,37 @@ const Grades = () => {
                 ))}
               </ul>
               <p className="total">{`Total score for this answer page is ${result.grade}/${result.totalPoints}`}</p>
-              <Button
-                kind="primary"
-                className="upload-button"
-                renderIcon={ArrowUpRight}
-                // onClick={(e) => uploadFiles(section, e)}
-                // disabled={}
-              >
-                View Breakdown
-              </Button>
+              <div className="button-container">
+                <Button
+                  kind="primary"
+                  className=""
+                  // renderIcon={ArrowUpRight}
+                  onClick={() => nav("/details")}
+                  // disabled={}
+                >
+                  View Details
+                </Button>
+
+                <Button
+                  kind="tertiary"
+                  className=""
+                  // renderIcon={ArrowUpRight}
+                  // onClick={() => nav('/viewUploads)}
+                  disabled={true}
+                >
+                  View Original Upload
+                </Button>
+
+                <Button
+                  kind="tertiary"
+                  className=""
+                  renderIcon={ArrowUpRight}
+                  // onClick={(e) => uploadFiles(section, e)}
+                  disabled={true}
+                >
+                  Upload Scores to Google Sheets
+                </Button>
+              </div>
             </Column>
           </Grid>
         );
