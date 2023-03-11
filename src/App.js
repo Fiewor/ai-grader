@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage";
 import DropArea from "./pages/DropArea";
 import DisplayContent from "./pages/DisplayContent";
 import Grades from "./pages/Grades";
+import Details from "./pages/Details";
 
 const App = () => {
   const ids = useContext(IdContext);
@@ -28,11 +29,8 @@ const App = () => {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/droparea" element={<DropArea />} />
             <Route path="/grade" element={<Grades />} />
-
-            <Route
-              path="/uploads"
-              element={<DisplayContent route="all-uploads" />}
-            />
+            <Route path="/uploads" element={<DisplayContent route="docs" />} />
+            <Route path="details" element={<Details />} />
             <Route path="*" element={<ErrorPage />} />
           </Routes>
         </IdProvider>
