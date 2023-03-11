@@ -1,0 +1,8 @@
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/breakpoint" as *;
+
+.cds--content {
+  @include breakpoint-down(lg) {
+    padding: 0;
+  }
+}
