@@ -8,47 +8,47 @@
 .landing-page {
   height: 100%;
   align-content: space-between;
-}
 
-.landing-page__heading {
-  @include type-style("productive-heading-07");
-}
-
-.landing-page__subheading {
-  @include type-style("heading-03");
-  margin-top: $spacing-02;
-  margin-bottom: $spacing-02;
-  @include breakpoint-down(md) {
-    padding-top: $spacing-04;
+  &__heading {
+    @include type-style("productive-heading-07");
   }
-}
 
-.landing-page__middle {
-  // @include landing-page-background;
-  @include type-style("productive-heading-03");
-}
-
-.landing-page__middle-row {
-  margin: $spacing-06;
-  p {
+  &__subheading {
+    @include type-style("heading-03");
     margin-top: $spacing-02;
     margin-bottom: $spacing-02;
+    @include breakpoint-down(md) {
+      padding-top: $spacing-04;
+    }
   }
-}
 
-.landing-page__footer {
-  padding-top: $spacing-06;
-  padding-bottom: $spacing-03;
-  grid-row-start: third-line last-line;
-}
+  &__middle {
+    // @include landing-page-background;
+    @include type-style("productive-heading-03");
 
-.landing-page__footer__link {
-  padding-top: $spacing-06;
-  &:not(:first-child) {
-    text-align: center;
+    &__row {
+      margin: $spacing-06;
+      p {
+        margin-top: $spacing-02;
+        margin-bottom: $spacing-02;
+      }
+    }
   }
-  @include breakpoint-down(md) {
-    text-align: center;
-    padding-top: $spacing-02;
+
+  &__footer {
+    padding-top: $spacing-06;
+    padding-bottom: $spacing-03;
+    grid-row-start: third-line last-line;
+
+    &__link {
+      padding-top: $spacing-06;
+      &:not(:first-child) {
+        text-align: center;
+      }
+      @include breakpoint-down(md) {
+        text-align: center;
+        padding-top: $spacing-02;
+      }
+    }
   }
 }
