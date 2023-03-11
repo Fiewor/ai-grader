@@ -1,4 +1,5 @@
 @use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/breakpoint" as *;
 
 .score {
   padding: $spacing-03 0;
@@ -6,4 +7,9 @@
 
 .total {
   padding: $spacing-03 0;
+}
+
+.button-container {
+  display: grid;
+  gap: $spacing-04;
 }
