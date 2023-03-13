@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Column, Button } from "@carbon/react";
+import { Grid, Column, Button, UnorderedList, ListItem } from "@carbon/react";
 import {
   ArrowUpRight,
   LogoGithub,
@@ -20,15 +20,31 @@ const LandingPage = () => {
       </Column>
       <Column lg={16} md={8} sm={4} className="landing-page__middle">
         <Grid>
-          <Column lg={16} md={8} sm={4} className="landing-page__middle-row">
+          <Column lg={16} md={8} sm={4} className="landing-page__middle__row">
+            <div className="landing-page__middle__row__block">
+              <h3>How does it work?</h3>
+              <p>AI-Grader grades by performing these operations:</p>
+              <UnorderedList>
+                <ListItem className="landing-page__middle__row__block__item">
+                  Text extraction.
+                </ListItem>
+                <ListItem className="landing-page__middle__row__block__item">
+                  Key phrase identification.
+                </ListItem>
+                <ListItem className="landing-page__middle__row__block__item">
+                  Matching and comparison.
+                </ListItem>
+              </UnorderedList>
+            </div>
+
             <p>Try it out now</p>
             <Button element={Link} href="/droparea" renderIcon={ArrowUpRight}>
               Grader
             </Button>
           </Column>
-          <Column lg={16} md={8} sm={4} className="landing-page__middle-row">
+          <Column lg={16} md={8} sm={4} className="landing-page__middle__row">
             <p>Or use just the text extraction service.</p>
-            <Button kind="tertiary" renderIcon={ArrowUpRight}>
+            <Button kind="tertiary" renderIcon={ArrowUpRight} disabled={true}>
               Text Extraction
             </Button>
           </Column>
