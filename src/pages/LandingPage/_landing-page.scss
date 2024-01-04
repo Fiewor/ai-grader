@@ -28,7 +28,15 @@
 
     &__row {
       margin: $spacing-06;
-      p {
+      &__block {
+        margin: $spacing-06 0;
+
+        &__item {
+          padding: $spacing-02 0;
+        }
+      }
+
+      > p {
         margin-top: $spacing-02;
         margin-bottom: $spacing-02;
       }
