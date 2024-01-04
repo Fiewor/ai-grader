@@ -83,13 +83,15 @@ const DisplayContent = ({ route }) => {
         } else {
           return (
             <Grid fullWidth>
-              <p>Click on a document's id or filename to view its text</p>
-              {data.text.map((arr) => (
-                <List key={arr._id}>
-                  <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
-                  <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
-                </List>
-              ))}
+              <Column lg={16} md={8} sm={4} className="list-container">
+                {/* <p>Click on a document's id or filename to view its text</p> */}
+                {data.text.map((arr) => (
+                  <List key={arr._id}>
+                    <Link to={`/texts/${arr._id}`}>{arr._id}</Link>
+                    <Link to={`/texts/${arr._id}`}>{arr.page.fileName}</Link>
+                  </List>
+                ))}
+              </Column>
             </Grid>
           );
         }
