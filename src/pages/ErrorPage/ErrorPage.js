@@ -7,7 +7,7 @@ const ErrorPage = () => {
 
   return (
     <Grid fullWidth className="">
-      <Column lg={8} md={4} sm={2} className="error-page">
+      <Column lg={16} md={8} sm={4} className="error-page">
         <ActionableNotification
           title="Error"
           subtitle="Something went wrong."
