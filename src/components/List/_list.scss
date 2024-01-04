@@ -1,3 +1,9 @@
+@use "./overrides.scss";
+
 .radio {
   display: inline-block;
+}
+
+.list {
+  list-style: none;
 }
