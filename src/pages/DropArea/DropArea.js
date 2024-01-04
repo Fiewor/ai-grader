@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Grid, Column, FileUploader, Button } from "@carbon/react";
+import {
+  Grid,
+  Column,
+  FileUploader,
+  Button,
+  UnorderedList,
+  ListItem,
+} from "@carbon/react";
 import { ArrowUpRight } from "@carbon/react/icons";
 import { Link } from "react-router-dom";
 import Uploader from "../../components/Uploader";
@@ -9,18 +16,20 @@ const DropArea = () => {
     <Grid className="" fullWidth>
       <Column lg={16} md={8} sm={4} className="header">
         <h1>Instructions</h1>
-        <h3 className="sub-heading">Maximum file size is 4mb.</h3>
-        <h3 className="sub-heading">
-          Dimensions should be at least 50 x 50 pixels and at most 10000 x 10000
-          pixels.
-        </h3>
-        <h3 className="sub-heading">
-          Only .jpg, .png, .bmp, .pdf and .tff files are supported.
-        </h3>
-        <h3 className="sub-heading">
-          For PDF and TIFF files, the system currently processes only first two
-          pages.
-        </h3>
+        <UnorderedList>
+          <ListItem className="sub-heading">Maximum file size is 4mb.</ListItem>
+          <ListItem className="sub-heading">
+            Dimensions should be at least 50 x 50 pixels and at most 10000 x
+            10000 pixels.
+          </ListItem>
+          <ListItem className="sub-heading">
+            Only .jpg, .png, .bmp, .pdf and .tff files are supported.
+          </ListItem>
+          <ListItem className="sub-heading">
+            For PDF and TIFF files, the system currently processes only first
+            two pages.
+          </ListItem>
+        </UnorderedList>
       </Column>
       <Column lg={16} md={8} sm={4} className="upload-section">
         <Uploader section="answer" />
