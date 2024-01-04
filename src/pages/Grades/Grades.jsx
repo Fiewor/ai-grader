@@ -24,7 +24,7 @@ const Grades = () => {
   const answerUrl = answerIds?.join() || "";
   const markUrl = markIds?.join() || "";
 
-  console.log("route: ", `/viewGrade?markId=${markUrl}&answerId=${answerUrl}`);
+  console.log("route: ", `/grades?markId=${markUrl}&answerId=${answerUrl}`);
 
   const {
     status,
