@@ -11,6 +11,7 @@ import axios from "../../axios";
 
 const RenderButtonOrNotification = ({ files, section }) => {
   const [uploading, setUploading] = useState(false);
+  const [error, setError] = useState(false);
   const [clickedUpload, setClickedUpload] = useState(false);
   const [success, setSuccess] = useState(false);
   const [containsLargeFile, setContainsLargeFile] = useState(false);
@@ -89,6 +90,7 @@ const RenderButtonOrNotification = ({ files, section }) => {
       }
     } catch (error) {
       <ToastNotification role="alert" kind="error" timeout={5} title={error} />;
+      setError(true);
       console.log(error);
     }
   };
@@ -108,10 +110,10 @@ const RenderButtonOrNotification = ({ files, section }) => {
     );
   } else if (clickedUpload && !success) {
     return (
-      <ProgressBar
-        status={uploading ? "active" : "finished"}
-        label="Uploading files"
-      />
+        <ProgressBar
+          status={error ? 'error' : uploading ? "active" : "finished"}
+          label="Uploading files"
+        />
     );
   } else if (success) {
     return (
@@ -143,11 +145,13 @@ const Uploader = ({ section }) => {
     // setFiles(files.filter(({0: file, id}) => id !== index));
   };
 
+  const description = section === "mark" ? "This should be a scanned copy or image of the marking guide." : "This should be an image or scanned copy of students answer to a test. "
+
   return (
     <>
       <FileUploader
         labelTitle={`Upload ${section} sheet`}
-        labelDescription="This should be an image or scanned copy of students answer to a test. "
+        labelDescription={description}
         buttonLabel="Add file(s)"
         buttonKind="tertiary"
         //   renderIcon={Add}
