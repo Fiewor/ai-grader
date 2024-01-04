@@ -1,0 +1,15 @@
+@use "@carbon/react/scss/spacing" as *;
+@use "@carbon/react/scss/type" as *;
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.error-text {
+    text-align: center;
+    padding: $spacing-03;
+    @include type-style("heading-06");
+}
